@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "whya2uvWVIGAsQF/12jCxH50JmdBHh2osL/OsdzHw0PD0stSVmeTYD5GBWeQEWB/v3IdFGAJNAwgZzDLawqnZw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dejana\\OneDrive\\Documents\\URIS Dejana Coskov\\ChatService\\ChatService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dejana\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Dejana\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Dejana\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\Dejana\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Dejana\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Dejana\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
