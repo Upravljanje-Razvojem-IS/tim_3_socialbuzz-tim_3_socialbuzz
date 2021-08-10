@@ -14,6 +14,7 @@ namespace ReactionService.Controllers
 {
     [ApiController]
     [Route("api/reactions")]
+    [Produces("application/json", "application/xml")]
     public class ReactionController : ControllerBase
     {
         private readonly IReactionRepository reactionRepository;
@@ -31,6 +32,8 @@ namespace ReactionService.Controllers
         /// Vraća sve reakcije.
         /// </summary>
         /// <returns>Lista reackija</returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
         public ActionResult<List<ReactionDto>> GetReactions()
         {
@@ -47,6 +50,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionId">ID reakcije</param>
         /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet("{reactionId}")]
         public ActionResult<ReactionDto> GetReaction(Guid reactionId)
         {
@@ -63,6 +68,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reaction">Model reakcije</param>
         /// <returns>Kreiranu reakciju iz liste.</returns>
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public ActionResult<ReactionDto> CreateReaction([FromBody] ReactionCreateDto reaction)
         {
@@ -78,6 +85,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionId">ID reakcije</param>
         /// <returns>Status 204 (NoContent)</returns>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpDelete("{reactionId}")]
         public ActionResult DeleteReaction(Guid reactionId)
         {
@@ -102,6 +111,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reaction">Model reakcije koja se ažurira</param>
         /// <returns>Ažuriranu reakciju iz liste.</returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut]
         public ActionResult<ReactionDto> UpdateReaction(ReactionUpdateDto reaction)
         {

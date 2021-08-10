@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReactionService</name>
+    </assembly>
+    <members>
+        <member name="M:ReactionService.Controllers.ReactionController.GetReactions">
+            <summary>
+            Vraća sve reakcije.
+            </summary>
+            <returns>Lista reackija</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionController.GetReaction(System.Guid)">
+            <summary>
+            Vraća jednu reakciju na osnovu ID-ja reakcije.
+            </summary>
+            <param name="reactionId">ID reakcije</param>
+            <returns></returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionController.CreateReaction(ReactionService.Models.ReactionCreateDto)">
+            <summary>
+            Kreira novu reakciju.
+            </summary>
+            <param name="reaction">Model reakcije</param>
+            <returns>Kreiranu reakciju iz liste.</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionController.DeleteReaction(System.Guid)">
+            <summary>
+            Vrši brisanje jedne reakcije na osnovu ID-ja.
+            </summary>
+            <param name="reactionId">ID reakcije</param>
+            <returns>Status 204 (NoContent)</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionController.UpdateReaction(ReactionService.Models.ReactionUpdateDto)">
+            <summary>
+            Ažurira jednu reakciju.
+            </summary>
+            <param name="reaction">Model reakcije koja se ažurira</param>
+            <returns>Ažuriranu reakciju iz liste.</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionTypes(System.String)">
+            <summary>
+            Vraća sve tipove reakcija.
+            </summary>
+            <param name="reactionName">Naziv tipa reakcije.</param>
+            <returns>Lista tipova reackija</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionType(System.Guid)">
+            <summary>
+            Vraća jedan tip reakcije na osnovu ID-ja tipa reakcije.
+            </summary>
+            <param name="reactionId">ID tipa reakcije</param>
+            <returns></returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionTypeController.CreateReactionType(ReactionService.Models.ReactionTypeCreateDto)">
+            <summary>
+            Kreira nov tip reakcije.
+            </summary>
+            <param name="reactionType">Model tipa reakcije</param>
+            <returns>Kreiran tip reakcije iz liste.</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionTypeController.DeleteReactionType(System.Guid)">
+            <summary>
+            Vrši brisanje jednog tipa reakcije na osnovu ID-ja.
+            </summary>
+            <param name="reactionTypeId">ID tipa reakcije</param>
+            <returns>Status 204 (NoContent)</returns>
+        </member>
+        <member name="M:ReactionService.Controllers.ReactionTypeController.UpdateReactionType(ReactionService.Models.ReactionTypeUpdateDto)">
+            <summary>
+            Ažurira jedan tip reakcije.
+            </summary>
+            <param name="reactionType">Model tipa reakcije koji se ažurira</param>
+            <returns>Ažuriran tip reakcije iz liste.</returns>
+        </member>
+        <member name="P:ReactionService.Entities.Reaction.ReactionId">
+            <summary>
+            Predstavlja ID reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.Reaction.ReactionTypeId">
+            <summary>
+            Predstavlja prijavu ispita
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.Reaction.Day">
+            <summary>
+            Predstavlja dan kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.Reaction.Month">
+            <summary>
+            Predstavlja mesec kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.Reaction.Year">
+            <summary>
+            Predstavlja godinu kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.ReactionType.ReactionTypeID">
+            <summary>
+            Predstavlja ID tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.ReactionType.ReactionTypeName">
+            <summary>
+            Predstavlja naziv tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.ReactionType.ReactionTypeImage">
+            <summary>
+            Predstavlja url do slike tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.ReactionType.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Models.ReactionCreateDto">
+            <summary>
+            Predstavlja model za kreiranje reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionCreateDto.ReactionTypeId">
+            <summary>
+            Predstavlja ID tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionCreateDto.Day">
+            <summary>
+            Predstavlja dan kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionCreateDto.Month">
+            <summary>
+            Predstavlja mesec kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionCreateDto.Year">
+            <summary>
+            Predstavlja godinu kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Models.ReactionDto">
+            <summary>
+            Predstavlja reakciju (npr. Like)
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionDto.ReactionId">
+            <summary>
+            Predstavlja ID reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionDto.ReactionTypeId">
+            <summary>
+            Predstavlja prijavu ispita
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionDto.ReactionDate">
+            <summary>
+            Predstavlja datum kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Models.ReactionTypeCreateDto">
+            <summary>
+            Predstavlja model kreiranja tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeCreateDto.ReactionTypeID">
+            <summary>
+            Predstavlja ID tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeCreateDto.ReactionTypeName">
+            <summary>
+            Predstavlja naziv tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeCreateDto.ReactionTypeImage">
+            <summary>
+            Predstavlja url do slike tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeCreateDto.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Models.ReactionTypeDto">
+            <summary>
+            Predstavlja tip reakcija.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeDto.ReactionTypeID">
+            <summary>
+            Predstavlja ID tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeDto.ReactionTypeName">
+            <summary>
+            Predstavlja naziv tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeDto.ReactionTypeImage">
+            <summary>
+            Predstavlja url do slike tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeDto.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Models.ReactionTypeUpdateDto">
+            <summary>
+            Predstavlja model ažuriranja tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeUpdateDto.ReactionTypeID">
+            <summary>
+            Predstavlja ID tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeUpdateDto.ReactionTypeName">
+            <summary>
+            Predstavlja naziv tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeUpdateDto.ReactionTypeImage">
+            <summary>
+            Predstavlja url do slike tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionTypeUpdateDto.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Models.ReactionUpdateDto">
+            <summary>
+            Predstavlja model za ažuriranje reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionUpdateDto.ReactionId">
+            <summary>
+            Predstavlja ID reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionUpdateDto.ReactionTypeId">
+            <summary>
+            Predstavlja ID tipa reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionUpdateDto.Day">
+            <summary>
+            Predstavlja dan kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionUpdateDto.Month">
+            <summary>
+            Predstavlja mesec kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionUpdateDto.Year">
+            <summary>
+            Predstavlja godinu kreiranja reakcije.
+            </summary>
+        </member>
+    </members>
+</doc>

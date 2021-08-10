@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ReactionService",
-    "\\ReactionService\\ReactionService\\Data",
-    "\\ReactionService\\ReactionService\\Models",
-    "\\ReactionService\\ReactionService\\Properties"
+    "\\ReactionService"
   ],
   "SelectedNode": "\\ReactionService\\ReactionService.sln",
   "PreviewInSolutionExplorer": false

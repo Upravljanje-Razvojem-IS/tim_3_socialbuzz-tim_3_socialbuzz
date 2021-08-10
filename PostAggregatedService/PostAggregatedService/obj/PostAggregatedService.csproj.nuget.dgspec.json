@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj": {}
+    "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj": {
+    "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj",
+        "projectUniqueName": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj",
         "projectName": "PostAggregatedService",
-        "projectPath": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj",
+        "projectPath": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj",
         "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\obj\\",
+        "outputPath": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

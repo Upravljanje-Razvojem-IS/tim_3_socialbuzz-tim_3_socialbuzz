@@ -14,6 +14,7 @@ namespace ReactionService.Controllers
 {
     [ApiController]
     [Route("api/reactionTypes")]
+    [Produces("application/json", "application/xml")]
     public class ReactionTypeController : ControllerBase
     {
         private readonly IReactionTypeRepository reactionTypeRepository;
@@ -32,6 +33,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionName">Naziv tipa reakcije.</param>
         /// <returns>Lista tipova reackija</returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
         public ActionResult<List<ReactionTypeDto>> GetReactionTypes([FromQuery] string reactionName)
         {
@@ -48,6 +51,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionId">ID tipa reakcije</param>
         /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet("{reactionTypeId}")]
         public ActionResult<ReactionTypeDto> GetReactionType([FromRoute] Guid reactionTypeId)
         {
@@ -64,6 +69,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionType">Model tipa reakcije</param>
         /// <returns>Kreiran tip reakcije iz liste.</returns>
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public ActionResult<ReactionTypeDto> CreateReactionType([FromBody] ReactionTypeCreateDto reactionType)
         {
@@ -79,6 +86,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionTypeId">ID tipa reakcije</param>
         /// <returns>Status 204 (NoContent)</returns>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpDelete("{reactionTypeId}")]
         public ActionResult DeleteReactionType(Guid reactionTypeId)
         {
@@ -102,6 +111,8 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reactionType">Model tipa reakcije koji se ažurira</param>
         /// <returns>Ažuriran tip reakcije iz liste.</returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut]
         public ActionResult<ReactionTypeDto> UpdateReactionType ([FromBody] ReactionTypeUpdateDto reactionType)
         {

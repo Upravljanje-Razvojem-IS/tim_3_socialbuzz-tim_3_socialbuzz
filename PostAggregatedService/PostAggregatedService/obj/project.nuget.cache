@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Moi8b1unltg4mzJ7V0dzLmnxNHzX09c3NHuwprsSaHAzmO7QpSIrcb5G0MhmKNcygdn7BJ2z+k8SOp2UpbREMw==",
+  "dgSpecHash": "ECNZJJjIpeTWVEV1tiZ7ll8I6SVjcHYWyz3PbR8f7y/rYWpYFyXZP9u/9DOSwUFzE084KMXEz7UnHMtlMs77mg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\PostAggregatedService\\PostAggregatedService\\PostAggregatedService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ana\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\fluentvalidation\\10.3.0\\fluentvalidation.10.3.0.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\Ana\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
