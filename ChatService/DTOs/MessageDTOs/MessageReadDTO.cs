@@ -2,7 +2,7 @@
 
 namespace ChatService.DTOs.MessageDTOs
 {
-    public class MessageReadDTO
+    public class MessageReadDto
     {
         public Guid Id { get; set; }
         public string Body { get; set; }

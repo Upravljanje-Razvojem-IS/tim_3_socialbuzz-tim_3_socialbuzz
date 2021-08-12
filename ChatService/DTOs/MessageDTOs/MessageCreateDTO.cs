@@ -2,7 +2,7 @@
 
 namespace ChatService.DTOs.MessageDTOs
 {
-    public class MessageCreateDTO
+    public class MessageCreateDto
     {
         public string Body { get; set; }
         public bool IsDeleted { get; set; }

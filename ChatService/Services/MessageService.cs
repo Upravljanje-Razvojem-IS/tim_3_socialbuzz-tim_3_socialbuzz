@@ -28,7 +28,7 @@ namespace ChatService.Services
         }
 
 
-        public MessageConfirmationDTO Create(MessageCreateDTO dto)
+        public MessageConfirmationDto Create(MessageCreateDto dto)
         {
             var users = UserData.GetUsers();
 
@@ -52,13 +52,13 @@ namespace ChatService.Services
 
             _logger.Log("Create Message");
 
-            return _mapper.Map<MessageConfirmationDTO>(newEntity);
+            return _mapper.Map<MessageConfirmationDto>(newEntity);
         }
 
-        public List<MessageReadDTO> Get()
+        public List<MessageReadDto> Get()
         {
             var entities = _context.Messages
-                .ProjectTo<MessageReadDTO>(_mapper.ConfigurationProvider)
+                .ProjectTo<MessageReadDto>(_mapper.ConfigurationProvider)
                 .ToList();
 
             _logger.Log("Get Messages");
@@ -66,10 +66,10 @@ namespace ChatService.Services
             return entities;
         }
 
-        public MessageReadDTO Get(Guid id)
+        public MessageReadDto Get(Guid id)
         {
             var entity = _context.Messages
-                .ProjectTo<MessageReadDTO>(_mapper.ConfigurationProvider)
+                .ProjectTo<MessageReadDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefault(e => e.Id == id);
 
             _logger.Log("Get Message");
@@ -77,7 +77,7 @@ namespace ChatService.Services
             return entity;
         }
 
-        public MessageConfirmationDTO Update(Guid id, MessageCreateDTO dto)
+        public MessageConfirmationDto Update(Guid id, MessageCreateDto dto)
         {
             var users = UserData.GetUsers();
 
@@ -98,7 +98,7 @@ namespace ChatService.Services
 
             _logger.Log("Update Message");
 
-            return _mapper.Map<MessageConfirmationDTO>(entity);
+            return _mapper.Map<MessageConfirmationDto>(entity);
         }
 
 

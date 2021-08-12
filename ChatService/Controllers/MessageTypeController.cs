@@ -27,7 +27,7 @@ namespace ChatService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet]
-        public ActionResult<MessageTypeReadDTO> GetAll()
+        public ActionResult<MessageTypeReadDto> GetAll()
         {
             var messageTypes = _service.Get();
 
@@ -46,7 +46,7 @@ namespace ChatService.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet("{id}")]
-        public ActionResult<MessageTypeReadDTO> GetById(Guid id)
+        public ActionResult<MessageTypeReadDto> GetById(Guid id)
         {
             var messageType = _service.Get(id);
 
@@ -64,7 +64,7 @@ namespace ChatService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
-        public ActionResult PostMessageType([FromBody]MessageTypeCreateDTO dto)
+        public ActionResult PostMessageType([FromBody]MessageTypeCreateDto dto)
         {
             var entity = _service.Create(dto);
 
@@ -80,7 +80,7 @@ namespace ChatService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPut("{id}")]
-        public ActionResult UpdateMessageType(Guid id, [FromBody]MessageTypeCreateDTO dto)
+        public ActionResult UpdateMessageType(Guid id, [FromBody]MessageTypeCreateDto dto)
         {
             var messageType = _service.Update(id, dto);
 

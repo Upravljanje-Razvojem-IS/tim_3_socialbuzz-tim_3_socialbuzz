@@ -2,7 +2,7 @@
 
 namespace ChatService.DTOs.ChatDTOs
 {
-    public class ChatCreateDTO
+    public class ChatCreateDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

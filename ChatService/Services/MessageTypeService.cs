@@ -25,7 +25,7 @@ namespace ChatService.Services
             _logger = logger;
         }
 
-        public MessageTypeConfirmationDTO Create(MessageTypeCreateDTO dto)
+        public MessageTypeConfirmationDto Create(MessageTypeCreateDto dto)
         {
             MessageType newEntity = new MessageType()
             {
@@ -38,13 +38,13 @@ namespace ChatService.Services
 
             _logger.Log("Create MessageType");
 
-            return _mapper.Map<MessageTypeConfirmationDTO>(newEntity);
+            return _mapper.Map<MessageTypeConfirmationDto>(newEntity);
         }
 
-        public List<MessageTypeReadDTO> Get()
+        public List<MessageTypeReadDto> Get()
         {
             var messageTypes = _context.MessageTypes
-                .ProjectTo<MessageTypeReadDTO>(_mapper.ConfigurationProvider)
+                .ProjectTo<MessageTypeReadDto>(_mapper.ConfigurationProvider)
                 .ToList();
 
             _logger.Log("Get MessageTypes");
@@ -52,10 +52,10 @@ namespace ChatService.Services
             return messageTypes;
         }
 
-        public MessageTypeReadDTO Get(Guid id)
+        public MessageTypeReadDto Get(Guid id)
         {
             var messageType = _context.MessageTypes
-                .ProjectTo<MessageTypeReadDTO>(_mapper.ConfigurationProvider)
+                .ProjectTo<MessageTypeReadDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefault(e => e.Id == id);
 
             _logger.Log("Get MessageType");
@@ -63,7 +63,7 @@ namespace ChatService.Services
             return messageType;
         }
 
-        public MessageTypeConfirmationDTO Update(Guid id, MessageTypeCreateDTO dto)
+        public MessageTypeConfirmationDto Update(Guid id, MessageTypeCreateDto dto)
         {
             var messageType = _context.MessageTypes.FirstOrDefault(e => e.Id == id);
 
@@ -76,7 +76,7 @@ namespace ChatService.Services
 
             _logger.Log("Update MessageType");
 
-            return _mapper.Map<MessageTypeConfirmationDTO>(messageType);
+            return _mapper.Map<MessageTypeConfirmationDto>(messageType);
         }
 
 

@@ -8,8 +8,8 @@ namespace ChatService.MapperProfiles
     {
         public MessageTypeProfile()
         {
-            CreateMap<MessageType, MessageTypeReadDTO>();
-            CreateMap<MessageType, MessageTypeConfirmationDTO>();
+            CreateMap<MessageType, MessageTypeReadDto>();
+            CreateMap<MessageType, MessageTypeConfirmationDto>();
         }
     }
 }
