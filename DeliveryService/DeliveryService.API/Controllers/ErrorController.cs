@@ -17,12 +17,12 @@ namespace DeliveryService.API.Controllers
         public IActionResult ErrorLocalDevelopment([FromServices] IWebHostEnvironment webHostEnvironment)
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-            var exception = context.Error as LogisticException;
+            var exception = context.Error as DeliveryException;
 
             string stackTrace = context.Error.StackTrace;
             string message = context.Error.Message;
 
-            if(exception is LogisticException)
+            if(exception is DeliveryException)
             {
                 return Problem(
                 detail: stackTrace,
@@ -40,9 +40,9 @@ namespace DeliveryService.API.Controllers
         public IActionResult Error()
         {
             var context = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            var exception = context.Error as LogisticException;
+            var exception = context.Error as DeliveryException;
 
-            if (exception is LogisticException)
+            if (exception is DeliveryException)
             {
                 return Problem(
                 statusCode: exception.StatusCode,

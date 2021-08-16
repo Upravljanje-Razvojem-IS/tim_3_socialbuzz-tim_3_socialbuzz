@@ -2,10 +2,10 @@
 
 namespace DeliveryService.API.CustomException
 {
-    public class LogisticException : Exception
+    public class DeliveryException : Exception
     {
         public int StatusCode { get; set; }
-        public LogisticException(string message, int statusCode = 500) : base(message)
+        public DeliveryException(string message, int statusCode = 500) : base(message)
         {
             StatusCode = statusCode;
         }

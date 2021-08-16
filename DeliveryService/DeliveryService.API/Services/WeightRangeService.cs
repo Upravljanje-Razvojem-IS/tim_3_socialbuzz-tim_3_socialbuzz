@@ -45,7 +45,7 @@ namespace DeliveryService.API.Services
             _logger.Log("WeightRange FindAsync() executed!");
 
             if (weightById == null)
-                throw new LogisticException("Sorry, this WeightRange not found", 404);
+                throw new DeliveryException("Sorry, this WeightRange not found", 404);
 
             return await Task.FromResult(weightById);
         }
@@ -71,7 +71,7 @@ namespace DeliveryService.API.Services
             var updateWeight = await _context.WeightRanges.FirstOrDefaultAsync(e => e.Id == id);
 
             if (updateWeight == null)
-                throw new LogisticException("Sorry, this WeightRange does not exist", 400);
+                throw new DeliveryException("Sorry, this WeightRange does not exist", 400);
             
             updateWeight.MinimalWeight = weightRange.MinimalWeight;
             updateWeight.MaximalWeight = weightRange.MaximalWeight;
@@ -87,7 +87,7 @@ namespace DeliveryService.API.Services
             var deleteWeight = await _context.WeightRanges.FirstOrDefaultAsync(e => e.Id == id);
 
             if (deleteWeight == null)
-                throw new LogisticException("Sorry, this WeightRange doesnt exist", 400);
+                throw new DeliveryException("Sorry, this WeightRange doesnt exist", 400);
 
             _context.WeightRanges.Remove(deleteWeight);
             _logger.Log("WeightRange DeleteAsync() executed!");
