@@ -46,7 +46,7 @@ namespace DeliveryService.API.Services
             _logger.Log("Sale BrowseAsync() executed!");
 
             if (saleById == null)
-                throw new LogisticException("Sorry, this sale not found", 404);
+                throw new DeliveryException("Sorry, this sale not found", 404);
 
             return await Task.FromResult(saleById);
         }
@@ -90,7 +90,7 @@ namespace DeliveryService.API.Services
             var p = await _context.Sales.FirstOrDefaultAsync(e => e.Id == id);
 
             if (p == null)
-                throw new LogisticException("Sorry, this sale does not exist", 400);
+                throw new DeliveryException("Sorry, this sale does not exist", 400);
 
             p.ProductId = sale.ProductId;
 
@@ -105,7 +105,7 @@ namespace DeliveryService.API.Services
             p.Pieces = sale.Pieces;
 
             if (p.Pieces == 0)
-                throw new LogisticException("Number of pieces can not be null", 400);
+                throw new DeliveryException("Number of pieces can not be null", 400);
 
             var product = ProductMockService.ProductMocks.FirstOrDefault(e => e.Id == sale.ProductId);
             p.TotalWeight = product.Weight * p.Pieces;
@@ -130,7 +130,7 @@ namespace DeliveryService.API.Services
             var sale = await _context.Sales.FirstOrDefaultAsync(e => e.Id == id);
 
             if (sale == null)
-                throw new LogisticException("Sorry, this sale does not exist", 400);
+                throw new DeliveryException("Sorry, this sale does not exist", 400);
 
             _context.Sales.Remove(sale);
             await _context.SaveChangesAsync();

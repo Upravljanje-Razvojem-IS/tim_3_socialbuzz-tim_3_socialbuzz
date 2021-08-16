@@ -54,7 +54,7 @@ namespace DeliveryService.API.Services
             var city = await _context.Cities.FirstOrDefaultAsync(e => e.Id == cityId);
 
             if (city == null)
-                throw new LogisticException("Sorry, this city does not exist", 400);
+                throw new DeliveryException("Sorry, this city does not exist", 400);
 
             Address newAddress = new()
             {
@@ -75,12 +75,12 @@ namespace DeliveryService.API.Services
             var city = await _context.Cities.FirstOrDefaultAsync(e => e.Id == cityId);
 
             if (city == null)
-                throw new LogisticException("Sorry, this city does not exist", 400);
+                throw new DeliveryException("Sorry, this city does not exist", 400);
 
             var updatedAddress = await _context.Addresses.FirstOrDefaultAsync(e => e.Id == addressId);
 
             if (updatedAddress == null)
-                throw new LogisticException("Sorry, this Address does not exist", 400);
+                throw new DeliveryException("Sorry, this Address does not exist", 400);
 
             updatedAddress.Street = address.Street;
             updatedAddress.Number = address.Number;
@@ -95,7 +95,7 @@ namespace DeliveryService.API.Services
             var addressToDelete = await _context.Addresses.FirstOrDefaultAsync(e => e.Id == addressId);
 
             if (addressToDelete == null)
-                throw new LogisticException("Sorry, this Address does not exists", 400);
+                throw new DeliveryException("Sorry, this Address does not exists", 400);
 
             _context.Remove(addressToDelete);
             await _context.SaveChangesAsync();

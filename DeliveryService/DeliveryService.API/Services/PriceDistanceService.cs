@@ -44,7 +44,7 @@ namespace DeliveryService.API.Services
             _logger.Log("PriceDistance FindAsync() executed!");
 
             if (distanceById == null)
-                throw new LogisticException("Sorry, this PriceDistance does not exists", 404);
+                throw new DeliveryException("Sorry, this PriceDistance does not exists", 404);
 
             return await Task.FromResult(distanceById);
         }
@@ -70,7 +70,7 @@ namespace DeliveryService.API.Services
             var updateDistance = await _context.PriceDistances.FirstOrDefaultAsync(e => e.Id == id);
 
             if (updateDistance == null)
-                throw new LogisticException("Sorry, this PriceDistance does not exist");
+                throw new DeliveryException("Sorry, this PriceDistance does not exist");
 
             updateDistance.MinimalDistance = priceDistance.MinimalDistance;
             updateDistance.MaximalDistance = priceDistance.MaximalDistance;
@@ -87,7 +87,7 @@ namespace DeliveryService.API.Services
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (deleteDistance == null)
-                throw new LogisticException("Sorry, this PriceDistance does not exist", 400);
+                throw new DeliveryException("Sorry, this PriceDistance does not exist", 400);
 
             _context.PriceDistances.Remove(deleteDistance);
             await _context.SaveChangesAsync();

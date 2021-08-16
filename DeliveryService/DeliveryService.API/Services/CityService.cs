@@ -46,7 +46,7 @@ namespace DeliveryService.API.Services
             _logger.Log("City - FindAsync() executed");
 
             if (cityById == null)
-                throw new LogisticException("Sorry, this city does not found", 404);
+                throw new DeliveryException("Sorry, this city does not found", 404);
 
             return await Task.FromResult(cityById);
         }
@@ -75,7 +75,7 @@ namespace DeliveryService.API.Services
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (cityToUpdate == null)
-                throw new LogisticException("Sorry, this city does not exist", 400);
+                throw new DeliveryException("Sorry, this city does not exist", 400);
 
             cityToUpdate.Name = city.Name;
             cityToUpdate.PostalCode = city.PostalCode;
@@ -93,7 +93,7 @@ namespace DeliveryService.API.Services
             var cityToDelete = await _context.Cities.FirstOrDefaultAsync(e => e.Id == id);
 
             if (cityToDelete == null)
-                throw new LogisticException("Sorry, this city does not exist", 400);
+                throw new DeliveryException("Sorry, this city does not exist", 400);
 
             _context.Cities.Remove(cityToDelete);
             _logger.Log("City - DeleteAsync() executed");
