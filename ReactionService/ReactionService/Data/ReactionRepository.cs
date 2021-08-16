@@ -66,7 +66,6 @@ namespace ReactionService.Data
         public Reaction UpdateReaction(Reaction reaction)
         {
             var r = GetReactionById(reaction.ReactionId);
-            r.ReactionTypeId = reaction.ReactionTypeId;
             r.Day = reaction.Day;
             r.Month = reaction.Month;
             r.Year = reaction.Year;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PostAggregatedService.Data
 {
+#pragma warning disable CS1591
     public interface IPostAggregatedRepository
     {
         List<PostAggregated> GetPostAggregatedDetails();
@@ -18,4 +19,5 @@ namespace PostAggregatedService.Data
 
         void DeletePostAggregated(Guid postAggregatedId);
     }
+#pragma warning restore CS1591
 }

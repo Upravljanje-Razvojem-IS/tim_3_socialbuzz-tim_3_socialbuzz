@@ -31,7 +31,8 @@ namespace ReactionService.Controllers
         /// <summary>
         /// Vraća sve reakcije.
         /// </summary>
-        /// <returns>Lista reackija</returns>
+        /// <response code="200">Uspešno izlistane sve reakcije</response>
+        /// <response code="204">Reakcije ne postoje</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
@@ -49,7 +50,8 @@ namespace ReactionService.Controllers
         /// Vraća jednu reakciju na osnovu ID-ja reakcije.
         /// </summary>
         /// <param name="reactionId">ID reakcije</param>
-        /// <returns></returns>
+        /// <response code="200">Tip reakcije sa datim ID-em ne postoji</response>
+        /// <response code="204">Reakcija sa datim ID-em ne postoji</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet("{reactionId}")]
@@ -67,24 +69,34 @@ namespace ReactionService.Controllers
         /// Kreira novu reakciju.
         /// </summary>
         /// <param name="reaction">Model reakcije</param>
-        /// <returns>Kreiranu reakciju iz liste.</returns>
+        /// <response code="201">Uspešno kreirana reakcija</response>
+        /// <response code="400">Pogrešno uneti podaci</response>
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public ActionResult<ReactionDto> CreateReaction([FromBody] ReactionCreateDto reaction)
         {
-            var reactionEntity = mapper.Map<Reaction>(reaction);
+            try
+            {
+                var reactionEntity = mapper.Map<Reaction>(reaction);
 
-            var r = reactionRepository.CreateReaction(reactionEntity);
-            string location = linkGenerator.GetPathByAction("GetReaction", "Reaction", new { reactionId = r.ReactionId });
-            return Created(location, mapper.Map<ReactionDto>(r));
+                var r = reactionRepository.CreateReaction(reactionEntity);
+                string location = linkGenerator.GetPathByAction("GetReaction", "Reaction", new { reactionId = r.ReactionId });
+                return Created(location, mapper.Map<ReactionDto>(r));
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, "Create error, not acceptable value");
+            }
         }
 
         /// <summary>
         /// Vrši brisanje jedne reakcije na osnovu ID-ja.
         /// </summary>
         /// <param name="reactionId">ID reakcije</param>
-        /// <returns>Status 204 (NoContent)</returns>
+        /// <response code="404">Reakcija sa datim ID-em ne postoji</response>
+        /// <response code="204">Uspešno obrisana reakcija</response>
+        /// <response code="500">Greška pri brisanju reakcije</response>
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpDelete("{reactionId}")]
@@ -110,7 +122,20 @@ namespace ReactionService.Controllers
         /// Ažurira jednu reakciju.
         /// </summary>
         /// <param name="reaction">Model reakcije koja se ažurira</param>
-        /// <returns>Ažuriranu reakciju iz liste.</returns>
+        /// <response code="404">Reakcija sa datim ID-em ne postoji</response>
+        /// <response code="200">Uspešno ažurirana reakcija</response>
+        /// <response code="500">Greška pri ažuriranju reakcije</response>
+        /// d06e3c0a-0291-4dfd-b99f-07d0f6aa4501
+        /// <remarks>
+        /// { \
+        /// "reactionId": "d06e3c0a-0291-4dfd-b99f-07d0f6aa4501", \
+        /// "reactionTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+        /// "day": 10, \
+        /// "month": 10, \
+        /// "year": 2010 \
+        /// }
+        /// </remarks>
+        [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut]
@@ -118,13 +143,13 @@ namespace ReactionService.Controllers
         {
             try
             {
-                if (GetReaction(reaction.ReactionId) == null)
+                if (reactionRepository.GetReactionById(reaction.ReactionId) == null)
                 {
                     return NotFound();
                 }
-                var reactionEntity = mapper.Map<Reaction>(reaction);
+                Reaction reactionEntity = mapper.Map<Reaction>(reaction);
 
-                var r = reactionRepository.UpdateReaction(reactionEntity);
+                Reaction r = reactionRepository.UpdateReaction(reactionEntity);
                 return Ok(mapper.Map<ReactionDto>(r));
             }
             catch (Exception)
@@ -132,12 +157,13 @@ namespace ReactionService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
-
+#pragma warning disable CS1591
         [HttpOptions]
         public IActionResult GetReactionOptions()
         {
             Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
             return Ok();
         }
+#pragma warning restore CS1591
     }
 }

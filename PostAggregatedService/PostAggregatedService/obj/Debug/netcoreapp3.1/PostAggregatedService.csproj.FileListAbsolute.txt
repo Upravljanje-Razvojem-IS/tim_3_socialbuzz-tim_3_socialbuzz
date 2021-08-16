@@ -17,8 +17,14 @@ C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedServic
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\PostAggregatedService.pdb
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.csproj.CoreCompileInputs.cache
-C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.dll
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.pdb
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.genruntimeconfig.cache
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\PostAggregatedService.xml
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.csproj.CoreCompileInputs.cache
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.MvcApplicationPartsAssemblyInfo.cache

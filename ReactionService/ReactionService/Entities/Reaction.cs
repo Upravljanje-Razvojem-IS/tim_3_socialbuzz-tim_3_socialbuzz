@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ReactionService.Entities
 {
+    /// <summary>
+    /// Predstavlja model reakcije.
+    /// </summary>
     public class Reaction
     {
         /// <summary>

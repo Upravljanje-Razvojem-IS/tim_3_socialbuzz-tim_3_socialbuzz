@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,27 @@ namespace PostAggregatedService
             }).AddXmlDataContractSerializerFormatters();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSingleton<IPostAggregatedRepository, PostAggregatedRepository>();
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc("PostAggregatedOpenApiSpecification",
+                    new Microsoft.OpenApi.Models.OpenApiInfo()
+                    {
+                        Title = "Post Aggregated Service API",
+                        Version = "1",
+                        Description = "API za korišæenje (izlistavanje, dodavanje, menjanje, brisanje) agregiranih podataka sajta SocialBuzz",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                        {
+                            Name = "Ana Popoviæ",
+                            Email = "anapopovic1055@gmail.com"
+                        },
+                        TermsOfService = new Uri("https://google.com")
+                    });
+
+                var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+
+                setupAction.IncludeXmlComments(xmlCommentsPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +81,14 @@ namespace PostAggregatedService
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseSwagger();
+            app.UseSwaggerUI(setupAction =>
+            {
+                setupAction.SwaggerEndpoint("/swagger/PostAggregatedOpenApiSpecification/swagger.json", "Post Aggregated Service API");
+                setupAction.RoutePrefix = "";
+            });
+
+        app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

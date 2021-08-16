@@ -8,70 +8,92 @@
             <summary>
             Vraća sve reakcije.
             </summary>
-            <returns>Lista reackija</returns>
+            <response code="200">Uspešno izlistane sve reakcije</response>
+            <response code="204">Reakcije ne postoje</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionController.GetReaction(System.Guid)">
             <summary>
             Vraća jednu reakciju na osnovu ID-ja reakcije.
             </summary>
             <param name="reactionId">ID reakcije</param>
-            <returns></returns>
+            <response code="200">Tip reakcije sa datim ID-em ne postoji</response>
+            <response code="204">Reakcija sa datim ID-em ne postoji</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionController.CreateReaction(ReactionService.Models.ReactionCreateDto)">
             <summary>
             Kreira novu reakciju.
             </summary>
             <param name="reaction">Model reakcije</param>
-            <returns>Kreiranu reakciju iz liste.</returns>
+            <response code="201">Uspešno kreirana reakcija</response>
+            <response code="400">Pogrešno uneti podaci</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionController.DeleteReaction(System.Guid)">
             <summary>
             Vrši brisanje jedne reakcije na osnovu ID-ja.
             </summary>
             <param name="reactionId">ID reakcije</param>
-            <returns>Status 204 (NoContent)</returns>
+            <response code="404">Reakcija sa datim ID-em ne postoji</response>
+            <response code="204">Uspešno obrisana reakcija</response>
+            <response code="500">Greška pri brisanju reakcije</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionController.UpdateReaction(ReactionService.Models.ReactionUpdateDto)">
             <summary>
             Ažurira jednu reakciju.
             </summary>
             <param name="reaction">Model reakcije koja se ažurira</param>
-            <returns>Ažuriranu reakciju iz liste.</returns>
+            <response code="404">Reakcija sa datim ID-em ne postoji</response>
+            <response code="200">Uspešno ažurirana reakcija</response>
+            <response code="500">Greška pri ažuriranju reakcije</response>
+            d06e3c0a-0291-4dfd-b99f-07d0f6aa4501
+            <remarks>
+            { \
+            "reactionId": "d06e3c0a-0291-4dfd-b99f-07d0f6aa4501", \
+            "reactionTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+            "day": 10, \
+            "month": 10, \
+            "year": 2010 \
+            }
+            </remarks>
         </member>
         <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionTypes(System.String)">
             <summary>
             Vraća sve tipove reakcija.
             </summary>
             <param name="reactionName">Naziv tipa reakcije.</param>
-            <returns>Lista tipova reackija</returns>
+            <response code="200">Uspešno izlistani svi tipovi reakcija</response>
+            <response code="204">Tipovi reakcija ne postoje</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionType(System.Guid)">
             <summary>
             Vraća jedan tip reakcije na osnovu ID-ja tipa reakcije.
             </summary>
-            <param name="reactionId">ID tipa reakcije</param>
-            <returns></returns>
+            <param name="reactionTypeId">ID tipa reakcije</param>
+            <response code="200">Uspešno izlistan tip reakcije sa datim ID-em</response>
+            <response code="204">Tip reakcije ne postoji</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionTypeController.CreateReactionType(ReactionService.Models.ReactionTypeCreateDto)">
             <summary>
             Kreira nov tip reakcije.
             </summary>
             <param name="reactionType">Model tipa reakcije</param>
-            <returns>Kreiran tip reakcije iz liste.</returns>
+            <response code="201">Uspešno kreiran novi tip reakcije</response>
+            <response code="400">Pogrešno uneti podaci</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionTypeController.DeleteReactionType(System.Guid)">
             <summary>
             Vrši brisanje jednog tipa reakcije na osnovu ID-ja.
             </summary>
             <param name="reactionTypeId">ID tipa reakcije</param>
-            <returns>Status 204 (NoContent)</returns>
+            <response code="404">Tip reakcije sa datim ID-em ne postoji</response>
+            <response code="204">Uspešno obrisan tip reakcije</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionTypeController.UpdateReactionType(ReactionService.Models.ReactionTypeUpdateDto)">
             <summary>
             Ažurira jedan tip reakcije.
             </summary>
             <param name="reactionType">Model tipa reakcije koji se ažurira</param>
-            <returns>Ažuriran tip reakcije iz liste.</returns>
+            <response code="404">Tip reakcije sa datim ID-em ne postoji</response>
+            <response code="200">Uspešno ažuriran tip reakcije</response>
         </member>
         <member name="P:ReactionService.Entities.Reaction.ReactionId">
             <summary>

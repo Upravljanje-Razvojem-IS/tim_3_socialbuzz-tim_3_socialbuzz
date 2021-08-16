@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReactionService.Data
 {
+#pragma warning disable CS1591
     public interface IReactionTypeRepository
     {
         List<ReactionType> GetReactionTypes(string reactionName = null);
@@ -18,4 +19,5 @@ namespace ReactionService.Data
 
         void DeleteReactionType(Guid reactionTypeId);
     }
+#pragma warning restore CS1591
 }

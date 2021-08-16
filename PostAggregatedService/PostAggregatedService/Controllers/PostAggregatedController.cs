@@ -14,6 +14,7 @@ namespace PostAggregatedService.Controllers
 {
     [ApiController]
     [Route("api/postAggregatedDetails")]
+    [Produces("application/json", "application/xml")]
     public class PostAggregatedController : ControllerBase
     {
         private readonly IPostAggregatedRepository postAggregatedRepository;
@@ -31,6 +32,10 @@ namespace PostAggregatedService.Controllers
         /// Vraća sve agregirane podatke.
         /// </summary>
         /// <returns>Lista agregiranih podataka</returns>
+        /// <response code="200">Uspešno izlistani svi agregirani podaci</response>
+        /// <response code="204">Agregirani podaci ne postoje</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
         public ActionResult<List<PostAggregatedDto>> GetPostAggregatedDetails()
         {
@@ -46,7 +51,10 @@ namespace PostAggregatedService.Controllers
         /// Vraća agregirane podatke na osnovu ID-ja.
         /// </summary>
         /// <param name="postAggregatedId">ID agregiranih podataka</param>
-        /// <returns></returns>
+        /// <response code="200">Uspešno izlistani agregirani podaci</response>
+        /// <response code="204">Agregirani podaci sa datim ID-em ne postoje</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet("{postAggregatedId}")]
         public ActionResult<PostAggregatedDto> GetPostAggregated(Guid postAggregatedId)
         {
@@ -63,21 +71,39 @@ namespace PostAggregatedService.Controllers
         /// </summary>
         /// <param name="PostAggregated">Model agregiranih podataka</param>
         /// <returns>Kreiranu reakciju iz liste.</returns>
+        /// <response code="406">Vrednost određenih atributa nije dozvoljen.</response>
+        /// <response code="201">Uspešno kreirani agregirani podaci</response>
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
         [HttpPost]
         public ActionResult<PostAggregatedDto> CreatePostAggregated([FromBody] PostAggregatedCreateDto PostAggregated)
         {
-            var PostAggregatedEntity = mapper.Map<PostAggregated>(PostAggregated);
+            try
+            {
+                var PostAggregatedEntity = mapper.Map<PostAggregated>(PostAggregated);
 
-            var p = postAggregatedRepository.CreatePostAggregated(PostAggregatedEntity);
-            string location = linkGenerator.GetPathByAction("GetPostAggregated", "PostAggregated", new { postAggregatedId = p.PostAggregatedId });
-            return Created(location, mapper.Map<PostAggregatedDto>(p));
+                var p = postAggregatedRepository.CreatePostAggregated(PostAggregatedEntity);
+                string location = linkGenerator.GetPathByAction("GetPostAggregated", "PostAggregated", new { postAggregatedId = p.PostAggregatedId });
+                return Created(location, mapper.Map<PostAggregatedDto>(p));
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status406NotAcceptable, "Create error, not acceptable value");
+            }
+
         }
 
         /// <summary>
         /// Vrši brisanje agregiranih podataka na osnovu ID-ja.
         /// </summary>
         /// <param name="postAggregatedId">ID agregiranih podataka</param>
-        /// <returns>Status 204 (NoContent)</returns>
+        /// <response code="404">Nisu pronađeni agregirani podaci sa tim ID-em</response>
+        /// <response code="204">Uspešno obrisani agregirani podaci</response>
+        /// <response code="500">Greška pri brisanju agregiranih podataka</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpDelete("{postAggregatedId}")]
         public ActionResult DeletePostAggregated(Guid postAggregatedId)
         {
@@ -102,12 +128,33 @@ namespace PostAggregatedService.Controllers
         /// </summary>
         /// <param name="PostAggregated">Model agregiranih podataka koji se ažuriraju</param>
         /// <returns>Ažurirane agregirane podatke iz liste.</returns>
+        /// <response code="200">Uspešno ažurirani agregirani podaci</response>
+        /// <response code="404">Agregirani podaci sa datim ID-em ne postoje</response>
+        /// <response code="500">Greška pri ažuriranju agegiranih podataka</response>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novih agregiranih podataka \
+        /// POST /api/PostAggregatedDetails \
+        /// {   \
+        ///     "postAggregatedId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+        ///     "postId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+        ///      "numberOfVisits": 10, \
+        ///      "numberOfComments": 5, \
+        ///      "numberOfLikes": 4, \
+        ///      "numberOfDislikes": 100, \
+        ///      "numberOfSmileys": 7, \
+        ///      "numberOfHearts": 6 \
+        ///      }
+        /// </remarks>
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut]
         public ActionResult<PostAggregatedDto> UpdatePostAggregated(PostAggregatedUpdateDto PostAggregated)
         {
             try
             {
-                if (GetPostAggregated(PostAggregated.PostAggregatedId) == null)
+                if (postAggregatedRepository.GetPostAggregatedById(PostAggregated.PostAggregatedId) == null)
                 {
                     return NotFound();
                 }
@@ -122,6 +169,7 @@ namespace PostAggregatedService.Controllers
             }
         }
 
+#pragma warning disable CS1591
         [HttpOptions]
         public IActionResult GetReactionOptions()
         {
@@ -129,4 +177,5 @@ namespace PostAggregatedService.Controllers
             return Ok();
         }
     }
+#pragma warning restore CS1591
 }

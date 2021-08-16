@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PostAggregatedService</name>
+    </assembly>
+    <members>
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregatedDetails">
+            <summary>
+            Vraća sve agregirane podatke.
+            </summary>
+            <returns>Lista agregiranih podataka</returns>
+            <response code="204">Agregirani podaci ne postoje</response>
+            <response code="200">Uspešno izlistani svi agregirani podaci</response>
+        </member>
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregated(System.Guid)">
+            <summary>
+            Vraća agregirane podatke na osnovu ID-ja.
+            </summary>
+            <param name="postAggregatedId">ID agregiranih podataka</param>
+            <response code="204">Uspešno izlistani agregirani podaci</response>
+            <response code="204">Agregirani podaci sa datim ID-em ne postoje</response>
+        </member>
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.CreatePostAggregated(PostAggregatedService.Models.PostAggregatedCreateDto)">
+            <summary>
+            Kreira nove agregirane podatke.
+            </summary>
+            <param name="PostAggregated">Model agregiranih podataka</param>
+            <returns>Kreiranu reakciju iz liste.</returns>
+            <response code="406">Vrednost određenih atributa nije dozvoljen.</response>
+            <response code="201">Uspešno kreirani agregirani podaci</response>
+        </member>
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.DeletePostAggregated(System.Guid)">
+            <summary>
+            Vrši brisanje agregiranih podataka na osnovu ID-ja.
+            </summary>
+            <param name="postAggregatedId">ID agregiranih podataka</param>
+            <response code="404">Nisu pronađeni agregirani podaci sa tim ID-em</response>
+            <response code="204">Uspešno obrisani agregirani podaci</response>
+            <response code="500">Greška pri brisanju agregiranih podataka</response>
+        </member>
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.UpdatePostAggregated(PostAggregatedService.Models.PostAggregatedUpdateDto)">
+            <summary>
+            Ažurira agregirane podatke.
+            </summary>
+            <param name="PostAggregated">Model agregiranih podataka koji se ažuriraju</param>
+            <returns>Ažurirane agregirane podatke iz liste.</returns>
+            <response code="200">Uspešno ažurirani agregirani podaci</response>
+            <response code="404">Agregirani podaci sa datim ID-em ne postoje</response>
+            <response code="500">Greška pri ažuriranju agegiranih podataka</response>
+            <remarks>
+            Primer zahteva za kreiranje novih agregiranih podataka \
+            POST /api/PostAggregatedDetails \
+            {   \
+                "postAggregatedId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+                "postId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+                 "numberOfVisits": 10, \
+                 "numberOfComments": 5, \
+                 "numberOfLikes": 4, \
+                 "numberOfDislikes": 100, \
+                 "numberOfSmileys": 7, \
+                 "numberOfHearts": 6 \
+                 } \
+            </remarks>
+        </member>
+        <member name="T:PostAggregatedService.Entities.PostAggregated">
+            <summary>
+            Predstavlja agregirane podatke oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.PostAggregatedId">
+            <summary>
+            Predstavlja ID agregiranih podataka.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.PostId">
+            <summary>
+            Predstavlja ID oglasa na koji se odnose agregirani podaci.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfVisits">
+            <summary>
+            Predstavlja broj poseta oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfComments">
+            <summary>
+            Predstavlja broj komentara oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfLikes">
+            <summary>
+            Predstavlja broj like-ova oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfDislikes">
+            <summary>
+            Predstavlja broj dislike-ova oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfSmileys">
+            <summary>
+            Predstavlja broj smiley-a oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfHearts">
+            <summary>
+            Predstavlja broj srca oglasa.
+            </summary>
+        </member>
+        <member name="T:PostAggregatedService.Models.PostAggregatedCreateDto">
+            <summary>
+            Predstavlja model za kreiranje agregiranih podataka oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedCreateDto.PostId">
+            <summary>
+            Predstavlja ID oglasa na koji se odnose agregirani podaci.
+            </summary>
+        </member>
+        <member name="T:PostAggregatedService.Models.PostAggregatedDto">
+            <summary>
+            Predstavlja agregirane podatke oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.PostAggregatedId">
+            <summary>
+            Predstavlja ID agregiranih podataka.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.PostId">
+            <summary>
+            Predstavlja ID oglasa na koji se odnose agregirani podaci.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.NumberOfVisits">
+            <summary>
+            Predstavlja broj poseta oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.NumberOfComments">
+            <summary>
+            Predstavlja broj komentara oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.NumberOfLikes">
+            <summary>
+            Predstavlja broj like-ova oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.NumberOfDislikes">
+            <summary>
+            Predstavlja broj dislike-ova oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.NumberOfSmileys">
+            <summary>
+            Predstavlja broj smiley-a oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedDto.NumberOfHearts">
+            <summary>
+            Predstavlja broj srca oglasa.
+            </summary>
+        </member>
+        <member name="T:PostAggregatedService.Models.PostAggregatedUpdateDto">
+            <summary>
+            Predstavlja model za ažuriranje agregiranih podataka oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.PostAggregatedId">
+            <summary>
+            Predstavlja ID agregiranih podataka.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.PostId">
+            <summary>
+            Predstavlja ID oglasa na koji se odnose agregirani podaci.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.NumberOfVisits">
+            <summary>
+            Predstavlja broj poseta oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.NumberOfComments">
+            <summary>
+            Predstavlja broj komentara oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.NumberOfLikes">
+            <summary>
+            Predstavlja broj like-ova oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.NumberOfDislikes">
+            <summary>
+            Predstavlja broj dislike-ova oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.NumberOfSmileys">
+            <summary>
+            Predstavlja broj smiley-a oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Models.PostAggregatedUpdateDto.NumberOfHearts">
+            <summary>
+            Predstavlja broj srca oglasa.
+            </summary>
+        </member>
+    </members>
+</doc>

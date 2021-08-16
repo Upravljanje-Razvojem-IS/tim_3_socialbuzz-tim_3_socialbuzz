@@ -66,8 +66,8 @@ namespace ReactionService.Data
         public ReactionType UpdateReactionType(ReactionType reactionType)
         {
             var reaction = GetReactionTypeById(reactionType.ReactionTypeID);
-            reactionType.ReactionTypeName = reactionType.ReactionTypeName;
-            reactionType.ReactionTypeImage = reactionType.ReactionTypeImage;
+            reaction.ReactionTypeName = reactionType.ReactionTypeName;
+            reaction.ReactionTypeImage = reactionType.ReactionTypeImage;
 
             return GetReactionTypeById(reaction.ReactionTypeID);
         }
