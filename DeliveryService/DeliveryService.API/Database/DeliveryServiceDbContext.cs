@@ -21,17 +21,5 @@ namespace DeliveryService.API.Database
         public virtual DbSet<WeightRange> WeightRanges { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
 
-        
-       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            //modelBuilder.Seed();
-
-            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
-            .SelectMany(e => e.GetForeignKeys()))
-            {
-                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
-            }
-        }*/
     }
 }
