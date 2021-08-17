@@ -38,7 +38,7 @@ namespace DeliveryService.API
             });
             services.AddMvc(options =>
             {
-                options.Filters.Add(typeof(ValidationModel));
+                options.Filters.Add(typeof(ValidationModelAttribute));
             });
 
             services.AddSwaggerGen(c =>

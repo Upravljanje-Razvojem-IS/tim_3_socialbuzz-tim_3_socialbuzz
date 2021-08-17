@@ -5,6 +5,7 @@ namespace DeliveryService.API.MockedProduct
 {
     public static class ProductMockService
     {
+        
         public static readonly IList<ProductMock> ProductMocks = new List<ProductMock>
         {
             new ProductMock

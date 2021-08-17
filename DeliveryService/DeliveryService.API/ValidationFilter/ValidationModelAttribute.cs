@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace DeliveryService.API.ValidationFilter
 {
     //Model state Attribute
-    public class ValidationModel : ActionFilterAttribute
+    public class ValidationModelAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
