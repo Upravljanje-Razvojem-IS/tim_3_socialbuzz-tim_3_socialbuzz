@@ -58,7 +58,8 @@ namespace DeliveryService.API.Services
             var toAddress = await _context.Addresses.FirstOrDefaultAsync(e => e.Id == sale.ToAddressId);
             toAddress.City = await _context.Cities.FirstOrDefaultAsync(e => e.Id == toAddress.CityId);
 
-            var product = ProductMockService.ProductMocks.FirstOrDefault(e => e.Id == sale.ProductId);
+            var products = ProductMockService.ProductMocks();
+            var product = products.FirstOrDefault(e => e.Id == sale.ProductId);
 
 
             Sale newSale = new()
@@ -107,7 +108,9 @@ namespace DeliveryService.API.Services
             if (p.Pieces == 0)
                 throw new DeliveryException("Number of pieces can not be null", 400);
 
-            var product = ProductMockService.ProductMocks.FirstOrDefault(e => e.Id == sale.ProductId);
+            var products = ProductMockService.ProductMocks();
+            var product = products.FirstOrDefault(e => e.Id == sale.ProductId);
+            
             p.TotalWeight = product.Weight * p.Pieces;
             var weightRange = await _context.WeightRanges.FirstOrDefaultAsync(e => e.MinimalWeight < p.TotalWeight && e.MaximalWeight >= p.TotalWeight);
             p.WeightRangeId = weightRange.Id;
