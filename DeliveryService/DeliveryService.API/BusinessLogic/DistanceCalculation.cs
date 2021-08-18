@@ -15,8 +15,13 @@ namespace DeliveryService.API.BusinessLogic
             double secondLatitude = to.Latitude;
             double secondLongitude = to.Longitude;
 
-            // metres
-            double R = 6371e3; 
+            /*
+                Formula Haversine in kilometers
+                https://superuser.com/questions/602798/how-to-do-a-great-circle-calculation-in-ms-excel-or-libreoffice
+                https://stackoverflow.com/questions/837872/calculate-distance-in-meters-when-you-know-longitude-and-latitude-in-java
+            */
+
+            double R = 6371; // meters => 6431e3
             double φ1 = firstLatitude * Math.PI / 180;
             double φ2 = secondLatitude * Math.PI / 180;
             double Δφ = (secondLatitude - firstLatitude) * Math.PI / 180;
@@ -27,10 +32,11 @@ namespace DeliveryService.API.BusinessLogic
                       Math.Sin(Δλ / 2) * Math.Sin(Δλ / 2);
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-            // metres
+            // kilometres
             double d = R * c; 
 
-            return d/1000;
+            // returns distance in kilometers
+            return d;
         }
     }
 }
