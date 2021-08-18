@@ -8,8 +8,8 @@ namespace PriceService.Profiles
     {
         public PriceHistoryMapper()
         {
-            CreateMap<PriceHistory, PriceHistoryReadDTO>();
-            CreateMap<PriceHistory, PriceHistoryConfirmationDTO>();
+            CreateMap<PriceHistory, PriceHistoryReadDto>();
+            CreateMap<PriceHistory, PriceHistoryConfirmationDto>();
         }
     }
 }

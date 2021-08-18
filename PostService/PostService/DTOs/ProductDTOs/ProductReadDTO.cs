@@ -3,7 +3,7 @@ using System;
 
 namespace PostService.DTOs.ProductDTOs
 {
-    public class ProductReadDTO
+    public class ProductReadDto
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
@@ -13,7 +13,7 @@ namespace PostService.DTOs.ProductDTOs
         public string Country { get; set; }
         public string Address { get; set; }
         public Guid? PostPictureId { get; set; }
-        public PostPicture? PostPicture { get; set; }
+        public PostPicture PostPicture { get; set; }
         public int OwnerId { get; set; }
         public int PriceId { get; set; }
         public decimal Weight { get; set; }

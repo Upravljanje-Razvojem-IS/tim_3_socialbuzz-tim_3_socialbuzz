@@ -41,7 +41,7 @@ namespace PostService
 
             services.AddMvc(options =>
             {
-                options.Filters.Add(typeof(ValidationFilter));
+                options.Filters.Add(typeof(ValidationFilterAttribute));
             });
 
             services.AddAuthentication(options =>

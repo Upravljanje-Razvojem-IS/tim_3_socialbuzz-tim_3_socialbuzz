@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Predrag Djukic\\source\\repos\\PostService\\PostService\\PostService.csproj": {}
+    "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PostService\\PostService\\PostService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Predrag Djukic\\source\\repos\\PostService\\PostService\\PostService.csproj": {
+    "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PostService\\PostService\\PostService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Predrag Djukic\\source\\repos\\PostService\\PostService\\PostService.csproj",
+        "projectUniqueName": "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PostService\\PostService\\PostService.csproj",
         "projectName": "PostService",
-        "projectPath": "C:\\Users\\Predrag Djukic\\source\\repos\\PostService\\PostService\\PostService.csproj",
-        "packagesPath": "C:\\Users\\Predrag Djukic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Predrag Djukic\\source\\repos\\PostService\\PostService\\obj\\",
+        "projectPath": "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PostService\\PostService\\PostService.csproj",
+        "packagesPath": "C:\\Users\\Laptop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PostService\\PostService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Predrag Djukic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

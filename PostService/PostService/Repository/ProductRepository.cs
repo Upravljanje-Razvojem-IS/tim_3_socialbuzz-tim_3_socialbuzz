@@ -22,7 +22,7 @@ namespace PostService.Repository
             _mapper = mapper;
         }
 
-        public ProductConfirmationDTO Create(ProductCreateDTO dto)
+        public ProductConfirmationDto Create(ProductCreateDto dto)
         {
             var owner = MockData.owners.FirstOrDefault(e => e.Id == dto.OwnerId);
             var price = MockData.prices.FirstOrDefault(e => e.Id == dto.PriceId);
@@ -52,24 +52,24 @@ namespace PostService.Repository
             _db.Products.Add(newProduct);
             _db.SaveChanges();
 
-            return _mapper.Map<ProductConfirmationDTO>(newProduct);
+            return _mapper.Map<ProductConfirmationDto>(newProduct);
         }
 
-        public List<ProductReadDTO> Get()
+        public List<ProductReadDto> Get()
         {
             var list = _db.Products.ToList();
 
-            return _mapper.Map<List<ProductReadDTO>>(list);
+            return _mapper.Map<List<ProductReadDto>>(list);
         }
 
-        public ProductReadDTO Get(Guid id)
+        public ProductReadDto Get(Guid id)
         {
             var entity = _db.Products.FirstOrDefault(e => e.Id == id);
 
-            return _mapper.Map<ProductReadDTO>(entity);
+            return _mapper.Map<ProductReadDto>(entity);
         }
 
-        public ProductConfirmationDTO Update(Guid id, ProductCreateDTO dto)
+        public ProductConfirmationDto Update(Guid id, ProductCreateDto dto)
         {
             var entity = _db.Products.FirstOrDefault(e => e.Id == id);
             if(entity == null)
@@ -97,7 +97,7 @@ namespace PostService.Repository
 
             _db.SaveChanges();
 
-            return _mapper.Map<ProductConfirmationDTO>(entity);
+            return _mapper.Map<ProductConfirmationDto>(entity);
         }
 
         public void Delete(Guid id)

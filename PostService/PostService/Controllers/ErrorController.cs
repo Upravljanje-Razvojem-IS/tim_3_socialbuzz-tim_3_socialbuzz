@@ -18,13 +18,6 @@ namespace PostService.Controllers
             string stackTrace = context.Error.StackTrace;
             string message = context.Error.Message;
 
-            if (exception is Exception)
-            {
-                return Problem(
-                detail: stackTrace,
-                title: message);
-            }
-
             return Problem(
                 detail: stackTrace,
                 title: message);
@@ -36,12 +29,6 @@ namespace PostService.Controllers
         {
             var context = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
             var exception = context.Error as Exception;
-
-            if (exception is Exception)
-            {
-                return Problem(
-                title: exception.Message);
-            }
 
             return Problem(
                 title: context.Error.Message,

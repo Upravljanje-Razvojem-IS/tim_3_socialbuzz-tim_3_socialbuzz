@@ -6,10 +6,10 @@ namespace PostService.Interface
 {
     public interface IPostPictureRepository
     {
-        List<PictureReadDTO> Get();
-        PictureReadDTO Get(Guid id);
-        PictureConfirmationDTO Create(PictureCreateDTO dto);
-        PictureConfirmationDTO Update(Guid id, PictureCreateDTO dto);
+        List<PictureReadDto> Get();
+        PictureReadDto Get(Guid id);
+        PictureConfirmationDto Create(PictureCreateDto dto);
+        PictureConfirmationDto Update(Guid id, PictureCreateDto dto);
         void Delete(Guid id);
     }
 }

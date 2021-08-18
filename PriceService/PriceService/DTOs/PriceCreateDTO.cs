@@ -2,7 +2,7 @@
 
 namespace PriceService.DTOs
 {
-    public class PriceCreateDTO
+    public class PriceCreateDto
     {
         public decimal Amount { get; set; }
         public string Currency { get; set; }

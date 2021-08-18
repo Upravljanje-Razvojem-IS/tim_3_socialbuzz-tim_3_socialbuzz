@@ -21,7 +21,7 @@ namespace PostService.Repository
             _db = db;
         }
 
-        public ServiceConfirmationDTO Create(ServiceCreateDTO dto)
+        public ServiceConfirmationDto Create(ServiceCreateDto dto)
         {
             var owner = MockData.owners.FirstOrDefault(e => e.Id == dto.OwnerId);
             var price = MockData.prices.FirstOrDefault(e => e.Id == dto.PriceId);
@@ -48,7 +48,7 @@ namespace PostService.Repository
             _db.Services.Add(newService);
             _db.SaveChanges();
 
-            return _mapper.Map<ServiceConfirmationDTO>(newService);
+            return _mapper.Map<ServiceConfirmationDto>(newService);
         }
 
         public void Delete(Guid id)
@@ -62,21 +62,21 @@ namespace PostService.Repository
             }
         }
 
-        public List<ServiceReadDTO> Get()
+        public List<ServiceReadDto> Get()
         {
             var list = _db.Services.ToList();
 
-            return _mapper.Map<List<ServiceReadDTO>>(list);
+            return _mapper.Map<List<ServiceReadDto>>(list);
         }
 
-        public ServiceReadDTO Get(Guid id)
+        public ServiceReadDto Get(Guid id)
         {
             var entity = _db.Services.FirstOrDefault(e => e.Id == id);
 
-            return _mapper.Map<ServiceReadDTO>(entity);
+            return _mapper.Map<ServiceReadDto>(entity);
         }
 
-        public ServiceConfirmationDTO Update(Guid id, ServiceCreateDTO dto)
+        public ServiceConfirmationDto Update(Guid id, ServiceCreateDto dto)
         {
             var entity = _db.Services.FirstOrDefault(e => e.Id == id);
             if (entity == null)
@@ -101,7 +101,7 @@ namespace PostService.Repository
 
             _db.SaveChanges();
 
-            return _mapper.Map<ServiceConfirmationDTO>(entity);
+            return _mapper.Map<ServiceConfirmationDto>(entity);
         }
     }
 }

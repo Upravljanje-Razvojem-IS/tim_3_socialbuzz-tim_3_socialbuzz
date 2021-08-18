@@ -6,10 +6,10 @@ namespace PriceService.Intefaces
 {
     public interface IPriceHistoryRepository
     {
-        List<PriceHistoryReadDTO> Get();
-        PriceHistoryReadDTO Get(Guid id);
-        PriceHistoryConfirmationDTO Create(PriceHistoryCreateDTO dto);
-        PriceHistoryConfirmationDTO Update(Guid id, PriceHistoryCreateDTO dto);
+        List<PriceHistoryReadDto> Get();
+        PriceHistoryReadDto Get(Guid id);
+        PriceHistoryConfirmationDto Create(PriceHistoryCreateDto dto);
+        PriceHistoryConfirmationDto Update(Guid id, PriceHistoryCreateDto dto);
         void Delete(Guid id);
     }
 }

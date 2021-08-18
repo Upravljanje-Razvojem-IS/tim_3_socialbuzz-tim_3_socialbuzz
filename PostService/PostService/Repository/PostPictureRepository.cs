@@ -20,7 +20,7 @@ namespace PostService.Repository
             _db = db;
         }
 
-        public PictureConfirmationDTO Create(PictureCreateDTO dto)
+        public PictureConfirmationDto Create(PictureCreateDto dto)
         {
             PostPicture newEntity = new PostPicture()
             {
@@ -31,24 +31,24 @@ namespace PostService.Repository
             _db.Pictures.Add(newEntity);
             _db.SaveChanges();
 
-            return _mapper.Map<PictureConfirmationDTO>(newEntity);
+            return _mapper.Map<PictureConfirmationDto>(newEntity);
         }
 
-        public List<PictureReadDTO> Get()
+        public List<PictureReadDto> Get()
         {
             var list = _db.Pictures.ToList();
 
-            return _mapper.Map<List<PictureReadDTO>>(list);
+            return _mapper.Map<List<PictureReadDto>>(list);
         }
 
-        public PictureReadDTO Get(Guid id)
+        public PictureReadDto Get(Guid id)
         {
             var entity = _db.Pictures.FirstOrDefault(e => e.Id == id);
 
-            return _mapper.Map<PictureReadDTO>(entity);
+            return _mapper.Map<PictureReadDto>(entity);
         }
 
-        public PictureConfirmationDTO Update(Guid id, PictureCreateDTO dto)
+        public PictureConfirmationDto Update(Guid id, PictureCreateDto dto)
         {
             var entityToUpdate = _db.Pictures.FirstOrDefault(e => e.Id == id);
 
@@ -59,7 +59,7 @@ namespace PostService.Repository
 
             _db.SaveChanges();
 
-            return _mapper.Map<PictureConfirmationDTO>(entityToUpdate);
+            return _mapper.Map<PictureConfirmationDto>(entityToUpdate);
         }
 
         public void Delete(Guid id)

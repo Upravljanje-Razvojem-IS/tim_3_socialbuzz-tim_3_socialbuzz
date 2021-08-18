@@ -21,7 +21,7 @@ namespace PriceService.Repository
             _mapper = mapper;
         }
 
-        public PriceConfirmationDTO Create(PriceCreateDTO dto)
+        public PriceConfirmationDto Create(PriceCreateDto dto)
         {
             var post = PostData.Posts().FirstOrDefault(e => e.Id == dto.PostId);
 
@@ -40,24 +40,24 @@ namespace PriceService.Repository
             _context.Prices.Add(newPrice);
             _context.SaveChanges();
 
-            return _mapper.Map<PriceConfirmationDTO>(newPrice);
+            return _mapper.Map<PriceConfirmationDto>(newPrice);
         }
 
-        public List<PriceReadDTO> Get()
+        public List<PriceReadDto> Get()
         {
             var prices = _context.Prices.ToList();
 
-            return _mapper.Map<List<PriceReadDTO>>(prices);
+            return _mapper.Map<List<PriceReadDto>>(prices);
         }
 
-        public PriceReadDTO Get(Guid id)
+        public PriceReadDto Get(Guid id)
         {
             var price = _context.Prices.FirstOrDefault(e => e.Id == id);
 
-            return _mapper.Map<PriceReadDTO>(price);
+            return _mapper.Map<PriceReadDto>(price);
         }
 
-        public PriceConfirmationDTO Update(Guid id, PriceCreateDTO dto)
+        public PriceConfirmationDto Update(Guid id, PriceCreateDto dto)
         {
             var post = PostData.Posts().FirstOrDefault(e => e.Id == dto.PostId);
 
@@ -76,7 +76,7 @@ namespace PriceService.Repository
 
             _context.SaveChanges();
 
-            return _mapper.Map<PriceConfirmationDTO>(price);
+            return _mapper.Map<PriceConfirmationDto>(price);
         }
 
         public void Delete(Guid id)

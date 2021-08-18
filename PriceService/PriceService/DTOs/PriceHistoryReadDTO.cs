@@ -2,7 +2,7 @@
 
 namespace PriceService.DTOs
 {
-    public class PriceHistoryReadDTO
+    public class PriceHistoryReadDto
     {
         public Guid Id { get; set; }
         public decimal Amount { get; set; }

@@ -20,7 +20,7 @@ namespace PriceService.Repository
             _mapper = mapper;
         }
 
-        public PriceHistoryConfirmationDTO Create(PriceHistoryCreateDTO dto)
+        public PriceHistoryConfirmationDto Create(PriceHistoryCreateDto dto)
         {
             PriceHistory newHistory = new PriceHistory()
             {
@@ -35,7 +35,7 @@ namespace PriceService.Repository
             _context.PriceHistories.Add(newHistory);
             _context.SaveChanges();
 
-            return _mapper.Map<PriceHistoryConfirmationDTO>(newHistory);
+            return _mapper.Map<PriceHistoryConfirmationDto>(newHistory);
         }
 
         public void Delete(Guid id)
@@ -49,21 +49,21 @@ namespace PriceService.Repository
             }
         }
 
-        public List<PriceHistoryReadDTO> Get()
+        public List<PriceHistoryReadDto> Get()
         {
             var histories = _context.PriceHistories.ToList();
 
-            return _mapper.Map<List<PriceHistoryReadDTO>>(histories);
+            return _mapper.Map<List<PriceHistoryReadDto>>(histories);
         }
 
-        public PriceHistoryReadDTO Get(Guid id)
+        public PriceHistoryReadDto Get(Guid id)
         {
             var history = _context.PriceHistories.FirstOrDefault(e => e.Id == id);
 
-            return _mapper.Map<PriceHistoryReadDTO>(history);
+            return _mapper.Map<PriceHistoryReadDto>(history);
         }
 
-        public PriceHistoryConfirmationDTO Update(Guid id, PriceHistoryCreateDTO dto)
+        public PriceHistoryConfirmationDto Update(Guid id, PriceHistoryCreateDto dto)
         {
             var history = _context.PriceHistories.FirstOrDefault(e => e.Id == id);
 
@@ -78,7 +78,7 @@ namespace PriceService.Repository
 
             _context.SaveChanges();
 
-            return _mapper.Map<PriceHistoryConfirmationDTO>(history);
+            return _mapper.Map<PriceHistoryConfirmationDto>(history);
         }
     }
 }

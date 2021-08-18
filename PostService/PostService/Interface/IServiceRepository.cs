@@ -6,10 +6,10 @@ namespace PostService.Interface
 {
     public interface IServiceRepository
     {
-        List<ServiceReadDTO> Get();
-        ServiceReadDTO Get(Guid id);
-        ServiceConfirmationDTO Create(ServiceCreateDTO dto);
-        ServiceConfirmationDTO Update(Guid id, ServiceCreateDTO dto);
+        List<ServiceReadDto> Get();
+        ServiceReadDto Get(Guid id);
+        ServiceConfirmationDto Create(ServiceCreateDto dto);
+        ServiceConfirmationDto Update(Guid id, ServiceCreateDto dto);
         void Delete(Guid id);
     }
 }

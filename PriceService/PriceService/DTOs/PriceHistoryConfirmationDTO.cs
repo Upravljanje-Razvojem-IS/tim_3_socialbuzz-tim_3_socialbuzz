@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PriceService.DTOs
 {
-    public class PriceHistoryConfirmationDTO
+    public class PriceHistoryConfirmationDto
     {
         public Guid Id { get; set; }
         public decimal Amount { get; set; }

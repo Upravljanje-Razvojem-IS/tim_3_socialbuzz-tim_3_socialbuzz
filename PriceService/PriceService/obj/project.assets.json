@@ -4662,7 +4662,7 @@
       ]
     },
     "System.Security.Cryptography.Cng/4.5.0": {
-      "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+      "sha512": "O4tqXxWCD8y1IU1VTgzbuBFwoRahrADhDUxHjwezhHCsqyFNyQ5EytjWBxu0EsZuH14b4UO2pFkG063K2h/9Ug==",
       "type": "package",
       "path": "system.security.cryptography.cng/4.5.0",
       "files": [
@@ -5621,19 +5621,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Predrag Djukic\\.nuget\\packages\\": {}
+    "C:\\Users\\Laptop\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Predrag Djukic\\source\\repos\\PriceService\\PriceService\\PriceService.csproj",
+      "projectUniqueName": "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PriceService\\PriceService\\PriceService.csproj",
       "projectName": "PriceService",
-      "projectPath": "C:\\Users\\Predrag Djukic\\source\\repos\\PriceService\\PriceService\\PriceService.csproj",
-      "packagesPath": "C:\\Users\\Predrag Djukic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Predrag Djukic\\source\\repos\\PriceService\\PriceService\\obj\\",
+      "projectPath": "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PriceService\\PriceService\\PriceService.csproj",
+      "packagesPath": "C:\\Users\\Laptop\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Laptop\\Desktop\\Senka URIS\\tim_3_socialbuzz-tim_3_socialbuzz\\PriceService\\PriceService\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Predrag Djukic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5704,7 +5708,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

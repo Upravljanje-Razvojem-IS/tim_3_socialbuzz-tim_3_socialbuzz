@@ -2,7 +2,7 @@
 
 namespace PostService.DTOs.ServiceDTOs
 {
-    public class ServiceCreateDTO
+    public class ServiceCreateDto
     {
         public DateTime Date { get; set; }
         public string Title { get; set; }

@@ -24,7 +24,7 @@ namespace PostService.Entities
         [Required]
         [ForeignKey("PostPicture")]
         public Guid? PostPictureId { get; set; }
-        public PostPicture? PostPicture { get; set; }
+        public PostPicture PostPicture { get; set; }
 
         [Required]
         public int OwnerId { get; set; }

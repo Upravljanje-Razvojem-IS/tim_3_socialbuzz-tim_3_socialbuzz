@@ -1,6 +1,6 @@
 ﻿namespace PostService.DTOs.PictureDTO
 {
-    public class PictureCreateDTO
+    public class PictureCreateDto
     {
         public string Url { get; set; }
     }

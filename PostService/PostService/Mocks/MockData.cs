@@ -4,7 +4,7 @@ namespace PostService.Mocks
 {
     public static class MockData
     {
-        public static List<Price> prices = new List<Price>()
+        public readonly static List<Price> prices = new List<Price>()
         {
             new Price()
             {
@@ -18,7 +18,7 @@ namespace PostService.Mocks
             }
         };
 
-        public static List<Owner> owners = new List<Owner>()
+        public readonly static List<Owner> owners = new List<Owner>()
         {
             new Owner()
             {

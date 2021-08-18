@@ -8,8 +8,8 @@ namespace PostService.MapperProfiles
     {
         public ProductMapper()
         {
-            CreateMap<Product, ProductReadDTO>();
-            CreateMap<Product, ProductConfirmationDTO>();
+            CreateMap<Product, ProductReadDto>();
+            CreateMap<Product, ProductConfirmationDto>();
         }
     }
 }

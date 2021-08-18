@@ -63,7 +63,7 @@ namespace PostService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
-        public ActionResult PostProduct([FromBody] ProductCreateDTO dto)
+        public ActionResult PostProduct([FromBody] ProductCreateDto dto)
         {
             var confirmation = _repo.Create(dto);
 
@@ -79,7 +79,7 @@ namespace PostService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPut("{id}")]
-        public ActionResult PutProduct(Guid id, [FromBody] ProductCreateDTO dto)
+        public ActionResult PutProduct(Guid id, [FromBody] ProductCreateDto dto)
         {
             var confirmation = _repo.Update(id, dto);
 

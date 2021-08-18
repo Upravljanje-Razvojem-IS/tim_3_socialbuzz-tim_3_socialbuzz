@@ -63,7 +63,7 @@ namespace PriceService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
-        public ActionResult PostNew([FromBody] PriceCreateDTO newPrice)
+        public ActionResult PostNew([FromBody] PriceCreateDto newPrice)
         {
             var createPrice = _repo.Create(newPrice);
 
@@ -80,7 +80,7 @@ namespace PriceService.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPut("{id}")]
-        public ActionResult UpdatePrice(Guid id, [FromBody] PriceCreateDTO update)
+        public ActionResult UpdatePrice(Guid id, [FromBody] PriceCreateDto update)
         {
             var updatedPrice = _repo.Update(id, update);
 

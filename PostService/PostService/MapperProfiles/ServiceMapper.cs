@@ -8,8 +8,8 @@ namespace PostService.MapperProfiles
     {
         public ServiceMapper()
         {
-            CreateMap<Service, ServiceReadDTO>();
-            CreateMap<Service, ServiceConfirmationDTO>();
+            CreateMap<Service, ServiceReadDto>();
+            CreateMap<Service, ServiceConfirmationDto>();
         }
     }
 }

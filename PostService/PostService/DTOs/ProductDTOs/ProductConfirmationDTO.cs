@@ -2,7 +2,7 @@
 
 namespace PostService.DTOs.ProductDTOs
 {
-    public class ProductConfirmationDTO
+    public class ProductConfirmationDto
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }

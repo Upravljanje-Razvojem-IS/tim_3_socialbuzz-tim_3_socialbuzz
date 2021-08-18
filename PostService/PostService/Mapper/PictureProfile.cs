@@ -8,8 +8,8 @@ namespace PostService.Mapper
     {
         public PictureProfile()
         {
-            CreateMap<PostPicture, PictureReadDTO>();
-            CreateMap<PostPicture, PictureConfirmationDTO>();
+            CreateMap<PostPicture, PictureReadDto>();
+            CreateMap<PostPicture, PictureConfirmationDto>();
         }
     }
 }

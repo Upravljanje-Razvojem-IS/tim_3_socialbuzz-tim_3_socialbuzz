@@ -2,7 +2,7 @@
 
 namespace PostService.DTOs.PictureDTO
 {
-    public class PictureReadDTO
+    public class PictureReadDto
     {
         public Guid Id { get; set; }
         public string Url { get; set; }
