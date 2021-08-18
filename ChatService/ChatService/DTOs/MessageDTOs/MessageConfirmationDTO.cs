@@ -2,7 +2,7 @@
 
 namespace ChatService.DTOs.MessageDTOs
 {
-    public class MessageConfirmationDTO
+    public class MessageConfirmationDto
     {
         public Guid Id { get; set; }
         public string Body { get; set; }

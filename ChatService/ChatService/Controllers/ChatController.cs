@@ -64,7 +64,7 @@ namespace ChatService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
-        public ActionResult PostMessage([FromBody] ChatCreateDTO dto)
+        public ActionResult PostMessage([FromBody] ChatCreateDto dto)
         {
             var entity = _service.Create(dto);
 
@@ -80,7 +80,7 @@ namespace ChatService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPut("{id}")]
-        public ActionResult PutMessage(Guid id, ChatCreateDTO dto)
+        public ActionResult PutMessage(Guid id, ChatCreateDto dto)
         {
             var entity = _service.Update(id, dto);
 

@@ -6,10 +6,10 @@ namespace ChatService.Interfaces
 {
     public interface IMessageService
     {
-        List<MessageReadDTO> Get();
-        MessageReadDTO Get(Guid id);
-        MessageConfirmationDTO Create(MessageCreateDTO dto);
-        MessageConfirmationDTO Update(Guid id, MessageCreateDTO dto);
+        List<MessageReadDto> Get();
+        MessageReadDto Get(Guid id);
+        MessageConfirmationDto Create(MessageCreateDto dto);
+        MessageConfirmationDto Update(Guid id, MessageCreateDto dto);
         void Delete(Guid id);
     }
 }
