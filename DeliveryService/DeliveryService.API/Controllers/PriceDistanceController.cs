@@ -31,7 +31,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<PriceDistanceOverview>> GetPriceDistance()
         {
@@ -56,7 +56,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         [HttpGet("{distanceId}")]
         public async Task<ActionResult<PriceDistanceDetails>> GetPriceDistanceById(Guid distanceId)
         {
@@ -76,7 +76,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<PriceDistanceConfirmation>> PostPriceDistance([FromBody] PriceDistancePostBody priceDistance)
         {
@@ -97,7 +97,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPut("{distanceId}")]
         public async Task<ActionResult<PriceDistanceConfirmation>> PutPriceDistance(Guid distanceId, [FromBody] PriceDistancePutBody priceDistance)
         {
@@ -116,7 +116,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpDelete("{distanceId}")]
         public async Task<IActionResult> DeletePriceDistance(Guid distanceId)
         {

@@ -10,7 +10,7 @@ namespace DeliveryService.API.Controllers
 {
     [ApiController]
     [Route("api/sale")]
-    [Authorize(Roles = "Admin,User")]
+    [Authorize]
     [Produces("application/json", "application/xml")]
 
     public class SaleController : ControllerBase

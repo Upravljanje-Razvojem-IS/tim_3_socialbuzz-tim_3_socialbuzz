@@ -32,7 +32,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<WeightRangeOverview>> GetWeightRange()
         {
@@ -57,7 +57,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         [HttpGet("{weightId}")]
         public async Task<ActionResult<WeightRangeDetails>> GetWeightRangeById(Guid weightId)
         {
@@ -77,7 +77,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<WeightRangeConfirmation>> PostWeightRange([FromBody] WeightRangePostBody weightRange)
         {
@@ -98,7 +98,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPut("{weightId}")]
         public async Task<ActionResult<WeightRangeConfirmation>> PutWeightRange(Guid weightId, [FromBody] WeightRangePutBody weightRange)
         {
@@ -117,7 +117,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpDelete("{weightId}")]
         public async Task<IActionResult> DeleteWeithRange(Guid weightId)
         {

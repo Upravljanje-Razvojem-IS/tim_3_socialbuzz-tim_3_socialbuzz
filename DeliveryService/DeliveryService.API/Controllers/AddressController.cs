@@ -10,7 +10,7 @@ namespace DeliveryService.API.Controllers
 {
     [ApiController]
     [Route("api/cities/{cityId}/addresses")]
-    [Authorize(Roles = "Admin,User")]
+    [Authorize]
     [Produces("application/json", "application/xml")]
 
     public class AddressController : ControllerBase
