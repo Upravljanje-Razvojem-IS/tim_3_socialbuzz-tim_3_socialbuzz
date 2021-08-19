@@ -13,7 +13,7 @@ namespace PostService.Controllers
         public IActionResult ErrorLocalDevelopment([FromServices] IWebHostEnvironment webHostEnvironment)
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-            var exception = context.Error as Exception;
+            var exception = context.Error;
 
             string stackTrace = context.Error.StackTrace;
             string message = context.Error.Message;
@@ -28,7 +28,7 @@ namespace PostService.Controllers
         public IActionResult Error()
         {
             var context = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            var exception = context.Error as Exception;
+            var exception = context.Error;
 
             return Problem(
                 title: context.Error.Message,
