@@ -32,7 +32,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<CityOverview>> GetCities()
         {
@@ -57,7 +57,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize]
         [HttpGet("{cityId}")]
         public async Task<ActionResult<CityDetails>> GetCityById(Guid cityId)
         {
@@ -78,7 +78,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<CityConfirmation>> PostCity([FromBody] CityPostBody city)
         {
@@ -99,7 +99,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPut("{cityId}")]
         public async Task<ActionResult<CityConfirmation>> PutCity(Guid cityId, [FromBody] CityPutBody city)
         {
@@ -118,7 +118,7 @@ namespace DeliveryService.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpDelete("{cityId}")]
         public async Task<IActionResult> DeleteCity(Guid cityId)
         {
