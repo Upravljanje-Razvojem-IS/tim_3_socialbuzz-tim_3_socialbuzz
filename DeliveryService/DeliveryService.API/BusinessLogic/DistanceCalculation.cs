@@ -22,14 +22,14 @@ namespace DeliveryService.API.BusinessLogic
             */
 
             double R = 6371; // meters => 6431e3
-            double φ1 = firstLatitude * Math.PI / 180;
-            double φ2 = secondLatitude * Math.PI / 180;
-            double Δφ = (secondLatitude - firstLatitude) * Math.PI / 180;
-            double Δλ = (secondLongitude - firstLongitude) * Math.PI / 180;
+            double lat1 = firstLatitude * Math.PI / 180;
+            double lat2 = secondLatitude * Math.PI / 180;
+            double dLat = (secondLatitude - firstLatitude) * Math.PI / 180;
+            double dLon = (secondLongitude - firstLongitude) * Math.PI / 180;
 
-            double a = Math.Sin(Δφ / 2) * Math.Sin(Δφ / 2) +
-                      Math.Cos(φ1) * Math.Cos(φ2) *
-                      Math.Sin(Δλ / 2) * Math.Sin(Δλ / 2);
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                      Math.Cos(lat1) * Math.Cos(lat2) *
+                      Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
             // kilometres
