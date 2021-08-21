@@ -14,7 +14,6 @@ namespace ReactionService.Controllers
 {
     [ApiController]
     [Route("api/reactionTypes")]
-    [Produces("application/json", "application/xml")]
     public class ReactionTypeController : ControllerBase
     {
         private readonly IReactionTypeRepository reactionTypeRepository;
@@ -31,15 +30,15 @@ namespace ReactionService.Controllers
         /// <summary>
         /// Vraća sve tipove reakcija.
         /// </summary>
-        /// <param name="reactionName">Naziv tipa reakcije.</param>
         /// <response code="200">Uspešno izlistani svi tipovi reakcija</response>
         /// <response code="204">Tipovi reakcija ne postoje</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json")]
         [HttpGet]
-        public ActionResult<List<ReactionTypeDto>> GetReactionTypes([FromQuery] string reactionName)
+        public ActionResult<List<ReactionTypeDto>> GetReactionTypes()
         {
-            var reactions = reactionTypeRepository.GetReactionTypes(reactionName);
+            var reactions = reactionTypeRepository.GetReactionTypes();
             if (reactions == null || reactions.Count == 0)
             {
                 return NoContent();
@@ -55,6 +54,7 @@ namespace ReactionService.Controllers
         /// <response code="204">Tip reakcije ne postoji</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json", "application/xml")]
         [HttpGet("{reactionTypeId}")]
         public ActionResult<ReactionTypeDto> GetReactionType([FromRoute] Guid reactionTypeId)
         {
@@ -72,8 +72,17 @@ namespace ReactionService.Controllers
         /// <param name="reactionType">Model tipa reakcije</param>
         /// <response code="201">Uspešno kreiran novi tip reakcije</response>
         /// <response code="400">Pogrešno uneti podaci</response>
+        /// <remarks>
+        /// Primer zahteva za kreiranje novog tipa reakcije \
+        /// POST /api/reactionTypes \
+        /// {   \
+        ///     "reactionTypeName": "New reaction", \
+        ///     "reactionTypeImage": "newReaction.img" \
+        /// }
+        /// </remarks>
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [Produces("application/json", "application/xml")]
         [HttpPost]
         public ActionResult<ReactionTypeDto> CreateReactionType([FromBody] ReactionTypeCreateDto reactionType)
         {
@@ -124,9 +133,19 @@ namespace ReactionService.Controllers
         /// <param name="reactionType">Model tipa reakcije koji se ažurira</param>
         /// <response code="404">Tip reakcije sa datim ID-em ne postoji</response>
         /// <response code="200">Uspešno ažuriran tip reakcije</response>
+        /// <remarks>
+        /// Primer zahteva za ažuriranje tipa reakcije \
+        /// PUT /api/reactionTypes \
+        /// {   \
+        ///     "reactionTypeID": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+        ///     "reactionTypeName": "New reaction", \
+        ///     "reactionTypeImage": "newReaction.img" \
+        /// }
+        /// </remarks>
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Produces("application/json", "application/xml")]
         [HttpPut]
         public ActionResult<ReactionTypeDto> UpdateReactionType ([FromBody] ReactionTypeUpdateDto reactionType)
         {

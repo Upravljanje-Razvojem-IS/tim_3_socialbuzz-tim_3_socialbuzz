@@ -16,7 +16,7 @@
             Vraća jednu reakciju na osnovu ID-ja reakcije.
             </summary>
             <param name="reactionId">ID reakcije</param>
-            <response code="200">Tip reakcije sa datim ID-em ne postoji</response>
+            <response code="200">Uspešno izlistana reakcija sa datim ID-em</response>
             <response code="204">Reakcija sa datim ID-em ne postoji</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionController.CreateReaction(ReactionService.Models.ReactionCreateDto)">
@@ -25,7 +25,7 @@
             </summary>
             <param name="reaction">Model reakcije</param>
             <response code="201">Uspešno kreirana reakcija</response>
-            <response code="400">Pogrešno uneti podaci</response>
+            <response code="422">Pogrešno uneti podaci</response>
         </member>
         <member name="M:ReactionService.Controllers.ReactionController.DeleteReaction(System.Guid)">
             <summary>
@@ -55,11 +55,10 @@
             }
             </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionTypes(System.String)">
+        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionTypes">
             <summary>
             Vraća sve tipove reakcija.
             </summary>
-            <param name="reactionName">Naziv tipa reakcije.</param>
             <response code="200">Uspešno izlistani svi tipovi reakcija</response>
             <response code="204">Tipovi reakcija ne postoje</response>
         </member>
@@ -78,6 +77,14 @@
             <param name="reactionType">Model tipa reakcije</param>
             <response code="201">Uspešno kreiran novi tip reakcije</response>
             <response code="400">Pogrešno uneti podaci</response>
+            <remarks>
+            Primer zahteva za kreiranje novog tipa reakcije \
+            POST /api/reactionTypes \
+            {   \
+                "reactionTypeName": "New reaction", \
+                "reactionTypeImage": "newReaction.img" \
+            }
+            </remarks>
         </member>
         <member name="M:ReactionService.Controllers.ReactionTypeController.DeleteReactionType(System.Guid)">
             <summary>
@@ -94,6 +101,20 @@
             <param name="reactionType">Model tipa reakcije koji se ažurira</param>
             <response code="404">Tip reakcije sa datim ID-em ne postoji</response>
             <response code="200">Uspešno ažuriran tip reakcije</response>
+            <remarks>
+            Primer zahteva za ažuriranje tipa reakcije \
+            PUT /api/reactionTypes \
+            {   \
+                "reactionTypeID": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+                "reactionTypeName": "New reaction", \
+                "reactionTypeImage": "newReaction.img" \
+            }
+            </remarks>
+        </member>
+        <member name="T:ReactionService.Entities.Reaction">
+            <summary>
+            Predstavlja model reakcije.
+            </summary>
         </member>
         <member name="P:ReactionService.Entities.Reaction.ReactionId">
             <summary>
@@ -120,6 +141,16 @@
             Predstavlja godinu kreiranja reakcije.
             </summary>
         </member>
+        <member name="P:ReactionService.Entities.Reaction.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Entities.ReactionType">
+            <summary>
+            Predstavlja model tipa reakcije.
+            </summary>
+        </member>
         <member name="P:ReactionService.Entities.ReactionType.ReactionTypeID">
             <summary>
             Predstavlja ID tipa reakcije.
@@ -133,11 +164,6 @@
         <member name="P:ReactionService.Entities.ReactionType.ReactionTypeImage">
             <summary>
             Predstavlja url do slike tipa reakcije.
-            </summary>
-        </member>
-        <member name="P:ReactionService.Entities.ReactionType.UserId">
-            <summary>
-            Predstavlja ID korisnika.
             </summary>
         </member>
         <member name="T:ReactionService.Models.ReactionCreateDto">
@@ -165,6 +191,11 @@
             Predstavlja godinu kreiranja reakcije.
             </summary>
         </member>
+        <member name="P:ReactionService.Models.ReactionCreateDto.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
         <member name="T:ReactionService.Models.ReactionDto">
             <summary>
             Predstavlja reakciju (npr. Like)
@@ -185,14 +216,14 @@
             Predstavlja datum kreiranja reakcije.
             </summary>
         </member>
+        <member name="P:ReactionService.Models.ReactionDto.UserId">
+            <summary>
+            Predstavlja ID korisnika.
+            </summary>
+        </member>
         <member name="T:ReactionService.Models.ReactionTypeCreateDto">
             <summary>
             Predstavlja model kreiranja tipa reakcije.
-            </summary>
-        </member>
-        <member name="P:ReactionService.Models.ReactionTypeCreateDto.ReactionTypeID">
-            <summary>
-            Predstavlja ID tipa reakcije.
             </summary>
         </member>
         <member name="P:ReactionService.Models.ReactionTypeCreateDto.ReactionTypeName">
@@ -203,11 +234,6 @@
         <member name="P:ReactionService.Models.ReactionTypeCreateDto.ReactionTypeImage">
             <summary>
             Predstavlja url do slike tipa reakcije.
-            </summary>
-        </member>
-        <member name="P:ReactionService.Models.ReactionTypeCreateDto.UserId">
-            <summary>
-            Predstavlja ID korisnika.
             </summary>
         </member>
         <member name="T:ReactionService.Models.ReactionTypeDto">
@@ -230,11 +256,6 @@
             Predstavlja url do slike tipa reakcije.
             </summary>
         </member>
-        <member name="P:ReactionService.Models.ReactionTypeDto.UserId">
-            <summary>
-            Predstavlja ID korisnika.
-            </summary>
-        </member>
         <member name="T:ReactionService.Models.ReactionTypeUpdateDto">
             <summary>
             Predstavlja model ažuriranja tipa reakcije.
@@ -253,11 +274,6 @@
         <member name="P:ReactionService.Models.ReactionTypeUpdateDto.ReactionTypeImage">
             <summary>
             Predstavlja url do slike tipa reakcije.
-            </summary>
-        </member>
-        <member name="P:ReactionService.Models.ReactionTypeUpdateDto.UserId">
-            <summary>
-            Predstavlja ID korisnika.
             </summary>
         </member>
         <member name="T:ReactionService.Models.ReactionUpdateDto">
@@ -288,6 +304,11 @@
         <member name="P:ReactionService.Models.ReactionUpdateDto.Year">
             <summary>
             Predstavlja godinu kreiranja reakcije.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Models.ReactionUpdateDto.UserId">
+            <summary>
+            Predstavlja ID korisnika.
             </summary>
         </member>
     </members>

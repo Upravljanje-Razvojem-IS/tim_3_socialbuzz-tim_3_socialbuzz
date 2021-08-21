@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ReactionService.Data;
+using ReactionService.DataLayer;
 
 namespace ReactionService
 {
@@ -26,6 +28,9 @@ namespace ReactionService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+            services.AddDbContext<ReactionDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("ReactionDatabase")));
+
             services.AddControllers(setup =>
             {
                 setup.ReturnHttpNotAcceptable = true;
@@ -68,8 +73,8 @@ namespace ReactionService
                 };
             }); ;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSingleton<IReactionTypeRepository, ReactionTypeRepository>();
-            services.AddSingleton<IReactionRepository, ReactionRepository>();
+            services.AddScoped<IReactionTypeRepository, ReactionTypeRepository>();
+            services.AddScoped<IReactionRepository, ReactionRepository>();
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("ReactionOpenApiSpecification",

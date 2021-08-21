@@ -14,7 +14,6 @@ namespace PostAggregatedService.Controllers
 {
     [ApiController]
     [Route("api/postAggregatedDetails")]
-    [Produces("application/json", "application/xml")]
     public class PostAggregatedController : ControllerBase
     {
         private readonly IPostAggregatedRepository postAggregatedRepository;
@@ -36,6 +35,7 @@ namespace PostAggregatedService.Controllers
         /// <response code="204">Agregirani podaci ne postoje</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json")]
         [HttpGet]
         public ActionResult<List<PostAggregatedDto>> GetPostAggregatedDetails()
         {
@@ -55,6 +55,7 @@ namespace PostAggregatedService.Controllers
         /// <response code="204">Agregirani podaci sa datim ID-em ne postoje</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json", "application/xml")]
         [HttpGet("{postAggregatedId}")]
         public ActionResult<PostAggregatedDto> GetPostAggregated(Guid postAggregatedId)
         {
@@ -76,6 +77,7 @@ namespace PostAggregatedService.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status406NotAcceptable)]
+        [Produces("application/json", "application/xml")]
         [HttpPost]
         public ActionResult<PostAggregatedDto> CreatePostAggregated([FromBody] PostAggregatedCreateDto PostAggregated)
         {
@@ -137,7 +139,7 @@ namespace PostAggregatedService.Controllers
         /// <response code="500">Greška pri ažuriranju agegiranih podataka</response>
         /// <remarks>
         /// Primer zahteva za kreiranje novih agregiranih podataka \
-        /// POST /api/PostAggregatedDetails \
+        /// PUT /api/PostAggregatedDetails \
         /// {   \
         ///     "postAggregatedId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
         ///     "postId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
@@ -153,6 +155,7 @@ namespace PostAggregatedService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Produces("application/json", "application/xml")]
         [HttpPut]
         public ActionResult<PostAggregatedDto> UpdatePostAggregated(PostAggregatedUpdateDto PostAggregated)
         {

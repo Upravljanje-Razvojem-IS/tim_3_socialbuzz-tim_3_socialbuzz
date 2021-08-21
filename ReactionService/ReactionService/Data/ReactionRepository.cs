@@ -1,4 +1,5 @@
-﻿using ReactionService.Entities;
+﻿using ReactionService.DataLayer;
+using ReactionService.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,13 @@ namespace ReactionService.Data
 {
     public class ReactionRepository : IReactionRepository
     {
+        private readonly ReactionDbContext contextDb;
         List<Reaction> Reactions = new List<Reaction>();
 
-        public ReactionRepository()
+        public ReactionRepository(ReactionDbContext contextDb)
         {
-            FillData();
+            this.contextDb = contextDb;
+            //FillData();
         }
 
         private void FillData()
@@ -42,35 +45,39 @@ namespace ReactionService.Data
         public Reaction CreateReaction(Reaction reaction)
         {
             reaction.ReactionId = new Guid();
-            Reactions.Add(reaction);
+            contextDb.Reaction.Add(reaction);
+            contextDb.SaveChanges();
+            //Reactions.Add(reaction);
             return GetReactionById(reaction.ReactionId);
         }
 
         public void DeleteReaction(Guid reactionId)
         {
             var reaction = GetReactionById(reactionId);
-            Reactions.Remove(reaction);
+            contextDb.Reaction.Remove(reaction);
+            contextDb.SaveChanges();
+            //Reactions.Remove(reaction);
         }
 
         public Reaction GetReactionById(Guid reactionId)
         {
-            return Reactions.FirstOrDefault(r => r.ReactionId == reactionId);
+            return contextDb.Reaction.FirstOrDefault(r => r.ReactionId == reactionId);
         }
 
         public List<Reaction> GetReactions(string reactionTypeId = null)
         {
-            return (from r in Reactions
-                    select r).ToList();
+            return contextDb.Reaction.ToList();
         }
 
         public Reaction UpdateReaction(Reaction reaction)
         {
-            var r = GetReactionById(reaction.ReactionId);
-            r.Day = reaction.Day;
-            r.Month = reaction.Month;
-            r.Year = reaction.Year;
-
-            return GetReactionById(r.ReactionTypeId);
+            var existingReaction = GetReactionById(reaction.ReactionId);
+            existingReaction.Day = reaction.Day;
+            existingReaction.Month = reaction.Month;
+            existingReaction.Year = reaction.Year;
+            contextDb.Reaction.Update(existingReaction);
+            contextDb.SaveChanges();
+            return GetReactionById(existingReaction.ReactionId);
         }
     }
 }

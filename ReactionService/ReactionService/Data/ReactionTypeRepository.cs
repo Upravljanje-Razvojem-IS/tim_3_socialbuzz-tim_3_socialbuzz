@@ -1,4 +1,5 @@
-﻿using ReactionService.Entities;
+﻿using ReactionService.DataLayer;
+using ReactionService.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,13 @@ namespace ReactionService.Data
 {
     public class ReactionTypeRepository : IReactionTypeRepository
     {
+        private readonly ReactionDbContext contextDb;
         public static List<ReactionType> ReactionTypes { get; set; } = new List<ReactionType>();
 
-        public ReactionTypeRepository ()
+        public ReactionTypeRepository (ReactionDbContext contextDb)
         {
-            FillData();
+            this.contextDb = contextDb;
+            //FillData();
         }
 
         private void FillData()
@@ -40,36 +43,38 @@ namespace ReactionService.Data
         public ReactionType CreateReactionType(ReactionType reactionType)
         {
             reactionType.ReactionTypeID = Guid.NewGuid();
-            ReactionTypes.Add(reactionType);
-            var reaction = GetReactionTypeById(reactionType.ReactionTypeID);
-            return reaction;
+            contextDb.ReactionTypes.Add(reactionType);
+            contextDb.SaveChanges();
+            //ReactionTypes.Add(reactionType);
+            return GetReactionTypeById(reactionType.ReactionTypeID);
         }
 
         public void DeleteReactionType(Guid reactionTypeId)
         {
             var reactionType = GetReactionTypeById(reactionTypeId);
-            ReactionTypes.Remove(reactionType);
+            contextDb.ReactionTypes.Remove(reactionType);
+            contextDb.SaveChanges();
+            //ReactionTypes.Remove(reactionType);
         }
 
         public ReactionType GetReactionTypeById(Guid reactionTypeId)
         {
-            return ReactionTypes.FirstOrDefault(e => e.ReactionTypeID == reactionTypeId);
+            return contextDb.ReactionTypes.FirstOrDefault(e => e.ReactionTypeID == reactionTypeId);
         }
 
-        public List<ReactionType> GetReactionTypes(string reactionName = null)
+        public List<ReactionType> GetReactionTypes()
         {
-            return (from r in ReactionTypes
-                    where string.IsNullOrEmpty(reactionName) || r.ReactionTypeName == reactionName
-                    select r).ToList();
+            return contextDb.ReactionTypes.ToList();
         }
 
         public ReactionType UpdateReactionType(ReactionType reactionType)
         {
-            var reaction = GetReactionTypeById(reactionType.ReactionTypeID);
-            reaction.ReactionTypeName = reactionType.ReactionTypeName;
-            reaction.ReactionTypeImage = reactionType.ReactionTypeImage;
-
-            return GetReactionTypeById(reaction.ReactionTypeID);
+            var existingReactionType = GetReactionTypeById(reactionType.ReactionTypeID);
+            existingReactionType.ReactionTypeName = reactionType.ReactionTypeName;
+            existingReactionType.ReactionTypeImage = reactionType.ReactionTypeImage;
+            contextDb.ReactionTypes.Update(existingReactionType);
+            contextDb.SaveChanges();
+            return GetReactionTypeById(existingReactionType.ReactionTypeID);
         }
     }
 }

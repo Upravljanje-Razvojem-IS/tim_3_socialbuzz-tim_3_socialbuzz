@@ -14,7 +14,6 @@ namespace ReactionService.Controllers
 {
     [ApiController]
     [Route("api/reactions")]
-    [Produces("application/json", "application/xml")]
     public class ReactionController : ControllerBase
     {
         private readonly IReactionRepository reactionRepository;
@@ -35,6 +34,7 @@ namespace ReactionService.Controllers
         /// <response code="204">Reakcije ne postoje</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json")]
         [HttpGet]
         public ActionResult<List<ReactionDto>> GetReactions()
         {
@@ -50,10 +50,11 @@ namespace ReactionService.Controllers
         /// Vraća jednu reakciju na osnovu ID-ja reakcije.
         /// </summary>
         /// <param name="reactionId">ID reakcije</param>
-        /// <response code="200">Tip reakcije sa datim ID-em ne postoji</response>
+        /// <response code="200">Uspešno izlistana reakcija sa datim ID-em</response>
         /// <response code="204">Reakcija sa datim ID-em ne postoji</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json", "application/xml")]
         [HttpGet("{reactionId}")]
         public ActionResult<ReactionDto> GetReaction(Guid reactionId)
         {
@@ -70,9 +71,10 @@ namespace ReactionService.Controllers
         /// </summary>
         /// <param name="reaction">Model reakcije</param>
         /// <response code="201">Uspešno kreirana reakcija</response>
-        /// <response code="400">Pogrešno uneti podaci</response>
+        /// <response code="422">Pogrešno uneti podaci</response>
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [Produces("application/json", "application/xml")]
         [HttpPost]
         public ActionResult<ReactionDto> CreateReaction([FromBody] ReactionCreateDto reaction)
         {
@@ -84,9 +86,9 @@ namespace ReactionService.Controllers
                 string location = linkGenerator.GetPathByAction("GetReaction", "Reaction", new { reactionId = r.ReactionId });
                 return Created(location, mapper.Map<ReactionDto>(r));
             }
-            catch
+            catch (Exception)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, "Create error, not acceptable value");
+                return StatusCode(StatusCodes.Status422UnprocessableEntity, "Create error, not acceptable value");
             }
         }
 
@@ -138,6 +140,7 @@ namespace ReactionService.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Produces("application/json", "application/xml")]
         [HttpPut]
         public ActionResult<ReactionDto> UpdateReaction(ReactionUpdateDto reaction)
         {

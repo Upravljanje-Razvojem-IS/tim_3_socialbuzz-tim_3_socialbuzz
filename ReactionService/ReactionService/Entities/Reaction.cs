@@ -34,5 +34,10 @@ namespace ReactionService.Entities
         /// Predstavlja godinu kreiranja reakcije.
         /// </summary>
         public int Year { get; set; }
+
+        /// <summary>
+        /// Predstavlja ID korisnika.
+        /// </summary>
+        public Guid UserId { get; set; }
     }
 }

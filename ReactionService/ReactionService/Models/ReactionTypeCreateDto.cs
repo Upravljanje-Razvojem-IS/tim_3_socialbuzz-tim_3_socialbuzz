@@ -11,11 +11,6 @@ namespace ReactionService.Models
     public class ReactionTypeCreateDto
     {
         /// <summary>
-        /// Predstavlja ID tipa reakcije.
-        /// </summary>
-        public Guid ReactionTypeID { get; set; }
-
-        /// <summary>
         /// Predstavlja naziv tipa reakcije.
         /// </summary>
         public string ReactionTypeName { get; set; }
@@ -24,10 +19,5 @@ namespace ReactionService.Models
         /// Predstavlja url do slike tipa reakcije.
         /// </summary>
         public string ReactionTypeImage { get; set; }
-
-        /// <summary>
-        /// Predstavlja ID korisnika.
-        /// </summary>
-        public Guid UserId { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace ReactionService.Data
 #pragma warning disable CS1591
     public interface IReactionTypeRepository
     {
-        List<ReactionType> GetReactionTypes(string reactionName = null);
+        List<ReactionType> GetReactionTypes();
 
         ReactionType GetReactionTypeById(Guid reactionTypeId);
 

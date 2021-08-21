@@ -24,10 +24,5 @@ namespace ReactionService.Entities
         /// Predstavlja url do slike tipa reakcije.
         /// </summary>
         public string ReactionTypeImage { get; set; }
-
-        /// <summary>
-        /// Predstavlja ID korisnika.
-        /// </summary>
-        public Guid UserId { get; set; }
     }
 }

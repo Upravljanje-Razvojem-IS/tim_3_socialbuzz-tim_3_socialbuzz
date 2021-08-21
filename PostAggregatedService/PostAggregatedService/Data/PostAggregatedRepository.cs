@@ -10,7 +10,6 @@ namespace PostAggregatedService.Data
     public class PostAggregatedRepository : IPostAggregatedRepository
     {
         private readonly PostAggregatedDbContext contextDb;
-        List<PostAggregated> postaggregatedList = new List<PostAggregated>();
 
         public PostAggregatedRepository(PostAggregatedDbContext contextDb)
         {

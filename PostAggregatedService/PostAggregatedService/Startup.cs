@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +39,44 @@ namespace PostAggregatedService
             services.AddControllers(setup =>
             {
                 setup.ReturnHttpNotAcceptable = true;
-            }).AddXmlDataContractSerializerFormatters();
+            }).AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions(setupAction =>
+            {
+                setupAction.InvalidModelStateResponseFactory = context =>
+                {
+                    ProblemDetailsFactory problemDetailsFactory = context.HttpContext.RequestServices
+                        .GetRequiredService<ProblemDetailsFactory>();
+
+                    ValidationProblemDetails problemDetails = problemDetailsFactory.CreateValidationProblemDetails(
+                        context.HttpContext,
+                        context.ModelState);
+
+                    problemDetails.Detail = "Pogledajte polje errors za detalje.";
+                    problemDetails.Instance = context.HttpContext.Request.Path;
+
+                    var actionExecutiongContext = context as ActionExecutingContext;
+
+                    if ((context.ModelState.ErrorCount > 0) &&
+                        (actionExecutiongContext?.ActionArguments.Count == context.ActionDescriptor.Parameters.Count))
+                    {
+                        problemDetails.Type = "https://google.com";
+                        problemDetails.Status = StatusCodes.Status422UnprocessableEntity;
+                        problemDetails.Title = "Došlo je do greške prilikom validacije.";
+
+                        return new UnprocessableEntityObjectResult(problemDetails)
+                        {
+                            ContentTypes = { "application/problem+json" }
+                        };
+                    };
+
+                    problemDetails.Status = StatusCodes.Status400BadRequest;
+                    problemDetails.Title = "Došlo je do greške prilikom parsiranja poslatog sadržaja.";
+                    return new BadRequestObjectResult(problemDetails)
+                    {
+                        ContentTypes = { "application/problem+json" }
+                    };
+                };
+            }); ;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IPostAggregatedRepository, PostAggregatedRepository>();
             services.AddSwaggerGen(setupAction =>

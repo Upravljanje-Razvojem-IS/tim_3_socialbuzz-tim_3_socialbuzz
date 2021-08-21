@@ -38,6 +38,11 @@ namespace ReactionService.Models
         /// </summary>
         public int Year { get; set; }
 
+        /// <summary>
+        /// Predstavlja ID korisnika.
+        /// </summary>
+        public Guid UserId { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             DateTime date = DateTime.Today;

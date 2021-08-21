@@ -24,5 +24,10 @@ namespace ReactionService.Models
         /// Predstavlja datum kreiranja reakcije.
         /// </summary>
         public string ReactionDate { get; set; }
+
+        /// <summary>
+        /// Predstavlja ID korisnika.
+        /// </summary>
+        public Guid UserId { get; set; }
     }
 }
