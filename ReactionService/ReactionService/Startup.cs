@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ReactionService.Data;
+using ReactionService.Data.BlockingMocks;
+using ReactionService.Data.PostMocks;
 using ReactionService.DataLayer;
 
 namespace ReactionService
@@ -75,6 +77,10 @@ namespace ReactionService
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IReactionTypeRepository, ReactionTypeRepository>();
             services.AddScoped<IReactionRepository, ReactionRepository>();
+            services.AddSingleton<IUserMockRepository, UserMockRepository>();
+            services.AddSingleton<IPostMockRepository, PostMockRepository>();
+            services.AddSingleton<IBlockingMockRepository, BlockingMockRepository>();
+            services.AddSingleton<IUserMockRepository, UserMockRepository>();
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("ReactionOpenApiSpecification",

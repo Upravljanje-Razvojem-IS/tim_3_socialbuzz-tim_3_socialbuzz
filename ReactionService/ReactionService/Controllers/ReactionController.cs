@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using ReactionService.Data;
+using ReactionService.Data.BlockingMocks;
+using ReactionService.Data.PostMocks;
 using ReactionService.Entities;
 using ReactionService.Models;
 using System;
@@ -17,12 +19,19 @@ namespace ReactionService.Controllers
     public class ReactionController : ControllerBase
     {
         private readonly IReactionRepository reactionRepository;
+        private readonly IPostMockRepository postMockRepository;
+        private readonly IBlockingMockRepository blockingMockRepository;
+        private readonly IUserMockRepository userMockRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public ReactionController(IReactionRepository reactionRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public ReactionController(IReactionRepository reactionRepository, IPostMockRepository postMockRepository, IUserMockRepository userMockRepository,
+                                    IBlockingMockRepository blockingMockRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.reactionRepository = reactionRepository;
+            this.postMockRepository = postMockRepository;
+            this.blockingMockRepository = blockingMockRepository;
+            this.userMockRepository = userMockRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
