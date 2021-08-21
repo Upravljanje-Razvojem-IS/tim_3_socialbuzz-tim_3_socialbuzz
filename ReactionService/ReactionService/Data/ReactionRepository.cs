@@ -15,32 +15,7 @@ namespace ReactionService.Data
         public ReactionRepository(ReactionDbContext contextDb)
         {
             this.contextDb = contextDb;
-            //FillData();
         }
-
-        private void FillData()
-        {
-            Reactions.AddRange(new List<Reaction>
-            {
-                new Reaction
-                {
-                    ReactionId = Guid.Parse("d06e3c0a-0291-4dfd-b99f-07d0f6aa4501"),
-                    ReactionTypeId = Guid.Parse("435e5a56-67fa-4262-8175-0ac53e712b7b"),
-                    Day = 12,
-                    Month = 4,
-                    Year = 2008
-                },
-                new Reaction
-                {
-                    ReactionId = Guid.Parse("93f498c9-4eae-42b5-b9ef-f98e53fd5169"),
-                    ReactionTypeId = Guid.Parse("435e5a56-67fa-4262-8175-0ac53e712b7b"),
-                    Day = 15,
-                    Month = 5,
-                    Year = 2005
-                }
-            }) ;
-        }
-
 
         public Reaction CreateReaction(Reaction reaction)
         {
