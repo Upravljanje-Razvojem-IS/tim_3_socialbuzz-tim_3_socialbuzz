@@ -1,18 +1,15 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using ReactionService.Data;
 
 namespace ReactionService
@@ -32,7 +29,44 @@ namespace ReactionService
             services.AddControllers(setup =>
             {
                 setup.ReturnHttpNotAcceptable = true;
-            }).AddXmlDataContractSerializerFormatters();
+            }).AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions(setupAction =>
+            {
+                setupAction.InvalidModelStateResponseFactory = context =>
+                {
+                    ProblemDetailsFactory problemDetailsFactory = context.HttpContext.RequestServices
+                        .GetRequiredService<ProblemDetailsFactory>();
+
+                    ValidationProblemDetails problemDetails = problemDetailsFactory.CreateValidationProblemDetails(
+                        context.HttpContext,
+                        context.ModelState);
+
+                    problemDetails.Detail = "Pogledajte polje errors za detalje.";
+                    problemDetails.Instance = context.HttpContext.Request.Path;
+
+                    var actionExecutiongContext = context as ActionExecutingContext;
+
+                    if ((context.ModelState.ErrorCount > 0) &&
+                        (actionExecutiongContext?.ActionArguments.Count == context.ActionDescriptor.Parameters.Count))
+                    {
+                        problemDetails.Type = "https://google.com";
+                        problemDetails.Status = StatusCodes.Status422UnprocessableEntity;
+                        problemDetails.Title = "Došlo je do greške prilikom validacije.";
+
+                        return new UnprocessableEntityObjectResult(problemDetails)
+                        {
+                            ContentTypes = { "application/problem+json" }
+                        };
+                    };
+
+                    problemDetails.Status = StatusCodes.Status400BadRequest;
+                    problemDetails.Title = "Došlo je do greške prilikom parsiranja poslatog sadržaja.";
+                    return new BadRequestObjectResult(problemDetails)
+                    {
+                        ContentTypes = { "application/problem+json" }
+                    };
+                };
+            }); ;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSingleton<IReactionTypeRepository, ReactionTypeRepository>();
             services.AddSingleton<IReactionRepository, ReactionRepository>();

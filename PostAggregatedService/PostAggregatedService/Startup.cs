@@ -9,11 +9,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PostAggregatedService.Data;
+using PostAggregatedService.DataLayer;
 
 namespace PostAggregatedService
 {
@@ -29,12 +31,15 @@ namespace PostAggregatedService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+            services.AddDbContext<PostAggregatedDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PostAggregatedDatabase")));
+
             services.AddControllers(setup =>
             {
                 setup.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSingleton<IPostAggregatedRepository, PostAggregatedRepository>();
+            services.AddScoped<IPostAggregatedRepository, PostAggregatedRepository>();
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("PostAggregatedOpenApiSpecification",

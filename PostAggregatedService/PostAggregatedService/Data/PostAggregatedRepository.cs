@@ -1,4 +1,5 @@
-﻿using PostAggregatedService.Entities;
+﻿using PostAggregatedService.DataLayer;
+using PostAggregatedService.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,67 +9,53 @@ namespace PostAggregatedService.Data
 {
     public class PostAggregatedRepository : IPostAggregatedRepository
     {
+        private readonly PostAggregatedDbContext contextDb;
         List<PostAggregated> postaggregatedList = new List<PostAggregated>();
 
-        public PostAggregatedRepository()
+        public PostAggregatedRepository(PostAggregatedDbContext contextDb)
         {
-            FillData();
-        }
-
-        private void FillData()
-        {
-            postaggregatedList.AddRange(new List<PostAggregated>
-            {
-                new PostAggregated
-                {
-                    PostAggregatedId = Guid.Parse("d221da3e-f9d5-45d5-a44c-15479d3b7b21"),
-                    PostId = Guid.Parse("71a1d81c-7fea-4e9a-bb29-541e165fc198"),
-                    NumberOfComments = 10,
-                    NumberOfDislikes= 5,
-                    NumberOfHearts = 6,
-                    NumberOfLikes = 10,
-                    NumberOfSmileys = 1,
-                    NumberOfVisits = 100
-                }
-            }) ;
+            this.contextDb = contextDb;
         }
 
         public PostAggregated CreatePostAggregated(PostAggregated postAggregated)
         {
             postAggregated.PostAggregatedId = new Guid();
-            postaggregatedList.Add(postAggregated);
+            contextDb.PostAggregated.Add(postAggregated);
+            contextDb.SaveChanges();
             return GetPostAggregatedById(postAggregated.PostAggregatedId);
         }
 
         public void DeletePostAggregated(Guid postAggregatedId)
         {
             var postAggregated = GetPostAggregatedById(postAggregatedId);
-            postaggregatedList.Remove(postAggregated);
+            contextDb.PostAggregated.Remove(postAggregated);
+            contextDb.SaveChanges();
         }
 
         public PostAggregated GetPostAggregatedById(Guid postAggregatedId)
         {
-            return postaggregatedList.FirstOrDefault(p => p.PostAggregatedId == postAggregatedId);
+            return contextDb.PostAggregated.FirstOrDefault(p => p.PostAggregatedId == postAggregatedId);
         }
 
         public List<PostAggregated> GetPostAggregatedDetails()
         {
-            return (from p in postaggregatedList
-                    select p).ToList();
+            return contextDb.PostAggregated.ToList();
+
         }
 
         public PostAggregated UpdatePostAggregated(PostAggregated postAggregated)
         {
-            var p = GetPostAggregatedById(postAggregated.PostAggregatedId);
-            p.PostId = postAggregated.PostId;
-            p.NumberOfComments = postAggregated.NumberOfComments;
-            p.NumberOfDislikes = postAggregated.NumberOfDislikes;
-            p.NumberOfHearts = postAggregated.NumberOfHearts;
-            p.NumberOfLikes = postAggregated.NumberOfLikes;
-            p.NumberOfSmileys = postAggregated.NumberOfSmileys;
-            p.NumberOfVisits = postAggregated.NumberOfVisits;
-
-            return GetPostAggregatedById(p.PostAggregatedId);
+            PostAggregated ExistingPostAggregated = GetPostAggregatedById(postAggregated.PostAggregatedId);
+            ExistingPostAggregated.PostId = postAggregated.PostId;
+            ExistingPostAggregated.NumberOfComments = postAggregated.NumberOfComments;
+            ExistingPostAggregated.NumberOfDislikes = postAggregated.NumberOfDislikes;
+            ExistingPostAggregated.NumberOfHearts = postAggregated.NumberOfHearts;
+            ExistingPostAggregated.NumberOfLikes = postAggregated.NumberOfLikes;
+            ExistingPostAggregated.NumberOfSmileys = postAggregated.NumberOfSmileys;
+            ExistingPostAggregated.NumberOfVisits = postAggregated.NumberOfVisits;
+            contextDb.PostAggregated.Update(ExistingPostAggregated);
+            contextDb.SaveChanges();
+            return GetPostAggregatedById(ExistingPostAggregated.PostAggregatedId);
         }
     }
 }

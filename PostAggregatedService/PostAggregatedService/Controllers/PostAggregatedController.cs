@@ -87,9 +87,13 @@ namespace PostAggregatedService.Controllers
                 string location = linkGenerator.GetPathByAction("GetPostAggregated", "PostAggregated", new { postAggregatedId = p.PostAggregatedId });
                 return Created(location, mapper.Map<PostAggregatedDto>(p));
             }
+            catch (NullReferenceException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Create error, internal error.");
+            }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status406NotAcceptable, "Create error, not acceptable value");
+                return StatusCode(StatusCodes.Status406NotAcceptable, "Create error, not acceptable value.");
             }
 
         }
@@ -165,7 +169,7 @@ namespace PostAggregatedService.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Update error, internal error.");
             }
         }
 

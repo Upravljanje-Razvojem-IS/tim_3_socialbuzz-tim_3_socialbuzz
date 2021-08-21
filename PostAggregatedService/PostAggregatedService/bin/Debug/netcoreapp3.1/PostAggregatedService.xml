@@ -9,15 +9,15 @@
             Vraća sve agregirane podatke.
             </summary>
             <returns>Lista agregiranih podataka</returns>
-            <response code="204">Agregirani podaci ne postoje</response>
             <response code="200">Uspešno izlistani svi agregirani podaci</response>
+            <response code="204">Agregirani podaci ne postoje</response>
         </member>
         <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregated(System.Guid)">
             <summary>
             Vraća agregirane podatke na osnovu ID-ja.
             </summary>
             <param name="postAggregatedId">ID agregiranih podataka</param>
-            <response code="204">Uspešno izlistani agregirani podaci</response>
+            <response code="200">Uspešno izlistani agregirani podaci</response>
             <response code="204">Agregirani podaci sa datim ID-em ne postoje</response>
         </member>
         <member name="M:PostAggregatedService.Controllers.PostAggregatedController.CreatePostAggregated(PostAggregatedService.Models.PostAggregatedCreateDto)">
@@ -59,7 +59,7 @@
                  "numberOfDislikes": 100, \
                  "numberOfSmileys": 7, \
                  "numberOfHearts": 6 \
-                 } \
+                 }
             </remarks>
         </member>
         <member name="T:PostAggregatedService.Entities.PostAggregated">
