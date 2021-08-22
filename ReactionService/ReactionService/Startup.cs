@@ -15,6 +15,7 @@ using ReactionService.Data;
 using ReactionService.Data.BlockingMocks;
 using ReactionService.Data.PostMocks;
 using ReactionService.DataLayer;
+using ReactionService.Entities;
 
 namespace ReactionService
 {
@@ -30,8 +31,10 @@ namespace ReactionService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<User>(Configuration.GetSection(User.SectionName));
             services.AddControllersWithViews();
             services.AddDbContext<ReactionDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("ReactionDatabase")));
+            services.AddOptions();
 
             services.AddControllers(setup =>
             {

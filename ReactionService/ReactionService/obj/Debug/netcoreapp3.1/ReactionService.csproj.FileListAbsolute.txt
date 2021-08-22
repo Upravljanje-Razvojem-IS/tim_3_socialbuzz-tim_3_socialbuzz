@@ -66,3 +66,7 @@ C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\Reac
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
+C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.csproj.CoreCompileInputs.cache
+C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.MvcApplicationPartsAssemblyInfo.cache

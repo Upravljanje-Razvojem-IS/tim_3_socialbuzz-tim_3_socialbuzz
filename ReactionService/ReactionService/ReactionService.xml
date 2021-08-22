@@ -4,48 +4,87 @@
         <name>ReactionService</name>
     </assembly>
     <members>
-        <member name="M:ReactionService.Controllers.ReactionController.GetReactions">
+        <member name="M:ReactionService.Controllers.ReactionController.GetReactions(System.String)">
             <summary>
             Vraća sve reakcije.
             </summary>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="200">Uspešno izlistane sve reakcije</response>
             <response code="204">Reakcije ne postoje</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za izlistavanje svih reakcija
+            GET 'http://localhost:44200/api/reactions/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionController.GetReaction(System.Guid)">
+        <member name="M:ReactionService.Controllers.ReactionController.GetReaction(System.Guid,System.String)">
             <summary>
             Vraća jednu reakciju na osnovu ID-ja reakcije.
             </summary>
             <param name="reactionId">ID reakcije</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="200">Uspešno izlistana reakcija sa datim ID-em</response>
             <response code="204">Reakcija sa datim ID-em ne postoji</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za izlistavanje jedne reakcije sa datm ID-em
+            GET 'http://localhost:44200/api/reactions/reactionId' \
+                --header 'Authorization: Bearer VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionController.CreateReaction(ReactionService.Models.ReactionCreateDto)">
+        <member name="M:ReactionService.Controllers.ReactionController.CreateReaction(ReactionService.Models.ReactionCreateDto,System.String)">
             <summary>
             Kreira novu reakciju.
             </summary>
             <param name="reaction">Model reakcije</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="201">Uspešno kreirana reakcija</response>
             <response code="422">Pogrešno uneti podaci</response>
+            <response code = "401" > Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za kreiranje jedne reakcije
+            POST 'http://localhost:44200/api/reactions/' \
+                --header 'Authorization: Bearer VerySecretUserKeyForAuthorization' \
+                { \
+                    "reactionTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
+                    "day": 10, \
+                    "month": 5, \
+                    "year": 2010, \
+                    "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" \
+                }
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionController.DeleteReaction(System.Guid)">
+        <member name="M:ReactionService.Controllers.ReactionController.DeleteReaction(System.Guid,System.String)">
             <summary>
             Vrši brisanje jedne reakcije na osnovu ID-ja.
             </summary>
             <param name="reactionId">ID reakcije</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="404">Reakcija sa datim ID-em ne postoji</response>
             <response code="204">Uspešno obrisana reakcija</response>
             <response code="500">Greška pri brisanju reakcije</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za brisanje jedne reakcije sa datim ID-em
+            DELETE 'http://localhost:44200/api/reactions/reactionId' \
+                --header 'Authorization: Bearer VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionController.UpdateReaction(ReactionService.Models.ReactionUpdateDto)">
+        <member name="M:ReactionService.Controllers.ReactionController.UpdateReaction(ReactionService.Models.ReactionUpdateDto,System.String)">
             <summary>
             Ažurira jednu reakciju.
             </summary>
             <param name="reaction">Model reakcije koja se ažurira</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="404">Reakcija sa datim ID-em ne postoji</response>
             <response code="200">Uspešno ažurirana reakcija</response>
             <response code="500">Greška pri ažuriranju reakcije</response>
-            d06e3c0a-0291-4dfd-b99f-07d0f6aa4501
+            <response code="401">Autorizacija je neuspešna</response>
             <remarks>
+            Primer zahteva za ažuriranje jedne reakcije sa datim ID-em
+            PUT 'http://localhost:44200/api/reactions/' \
+                --header 'Authorization: Bearer VerySecretUserKeyForAuthorization' \
             { \
             "reactionId": "d06e3c0a-0291-4dfd-b99f-07d0f6aa4501", \
             "reactionTypeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
@@ -55,61 +94,158 @@
             }
             </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionTypes">
+        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionTypes(System.String)">
             <summary>
             Vraća sve tipove reakcija.
             </summary>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="200">Uspešno izlistani svi tipovi reakcija</response>
             <response code="204">Tipovi reakcija ne postoje</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za izlistavanje svih tipova reakcija
+            GET 'http://localhost:44200/api/reactionTypes/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionType(System.Guid)">
+        <member name="M:ReactionService.Controllers.ReactionTypeController.GetReactionType(System.Guid,System.String)">
             <summary>
             Vraća jedan tip reakcije na osnovu ID-ja tipa reakcije.
             </summary>
             <param name="reactionTypeId">ID tipa reakcije</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="200">Uspešno izlistan tip reakcije sa datim ID-em</response>
             <response code="204">Tip reakcije ne postoji</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za izlistavanje tipa reakcije sa datim ID-em
+            GET 'http://localhost:44200/api/reactionTypes/reactionTypeId' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionTypeController.CreateReactionType(ReactionService.Models.ReactionTypeCreateDto)">
+        <member name="M:ReactionService.Controllers.ReactionTypeController.CreateReactionType(ReactionService.Models.ReactionTypeCreateDto,System.String)">
             <summary>
             Kreira nov tip reakcije.
             </summary>
             <param name="reactionType">Model tipa reakcije</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="201">Uspešno kreiran novi tip reakcije</response>
             <response code="400">Pogrešno uneti podaci</response>
+            <response code="401">Autorizacija je neuspešna</response>
             <remarks>
             Primer zahteva za kreiranje novog tipa reakcije \
-            POST /api/reactionTypes \
+            POST 'http://localhost:44200/api/reactionTypes/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
             {   \
                 "reactionTypeName": "New reaction", \
                 "reactionTypeImage": "newReaction.img" \
             }
             </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionTypeController.DeleteReactionType(System.Guid)">
+        <member name="M:ReactionService.Controllers.ReactionTypeController.DeleteReactionType(System.Guid,System.String)">
             <summary>
             Vrši brisanje jednog tipa reakcije na osnovu ID-ja.
             </summary>
             <param name="reactionTypeId">ID tipa reakcije</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="404">Tip reakcije sa datim ID-em ne postoji</response>
             <response code="204">Uspešno obrisan tip reakcije</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za brisanje tipa reakcije sa datim ID-em
+            DELETE 'http://localhost:44200/api/reactionTypes/reactionTypeId' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:ReactionService.Controllers.ReactionTypeController.UpdateReactionType(ReactionService.Models.ReactionTypeUpdateDto)">
+        <member name="M:ReactionService.Controllers.ReactionTypeController.UpdateReactionType(ReactionService.Models.ReactionTypeUpdateDto,System.String)">
             <summary>
             Ažurira jedan tip reakcije.
             </summary>
             <param name="reactionType">Model tipa reakcije koji se ažurira</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="404">Tip reakcije sa datim ID-em ne postoji</response>
             <response code="200">Uspešno ažuriran tip reakcije</response>
+            <response code="401">Autorizacija je neuspešna</response>
             <remarks>
             Primer zahteva za ažuriranje tipa reakcije \
-            PUT /api/reactionTypes \
+            PUT 'http://localhost:44200/api/reactionTypes/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
             {   \
                 "reactionTypeID": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
                 "reactionTypeName": "New reaction", \
                 "reactionTypeImage": "newReaction.img" \
             }
             </remarks>
+        </member>
+        <member name="T:ReactionService.Data.UserMockRepository">
+            <summary>
+            Lažni (mock) repozitorijum u ulozi korisnika
+            </summary>
+        </member>
+        <member name="T:ReactionService.Entities.BlockingMock">
+            <summary>
+            Predstavlja lažni model blokiranog korisnika.
+            </summary>
+        </member>
+        <member name="F:ReactionService.Entities.BlockingMock.BlockingMockId">
+            <summary>
+            Predstavlja ID bloka.
+            </summary>
+        </member>
+        <member name="F:ReactionService.Entities.BlockingMock.UserThatBlocks">
+            <summary>
+            Predstavlja ID korisnika koji blokira.
+            </summary>
+        </member>
+        <member name="F:ReactionService.Entities.BlockingMock.BlockedUser">
+            <summary>
+            Predstavlja ID korisnika koji je blokiran.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Entities.PostMock">
+            <summary>
+            Predstavlja lažni model oglasa.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.PostId">
+            <summary>
+            Predstavlja ID oglasa.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.UserId">
+            <summary>
+            Predstavlja ID oglasa.
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.Date">
+            <summary>
+            Predstavlja datum objavljivanja oglasa
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.Title">
+            <summary>
+            Predstavlja naziv oglasa
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.Description">
+            <summary>
+            Predstavlja opis oglasa
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.Country">
+            <summary>
+            Predstavlja državu iz koje je proizvod sa oglasa
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.City">
+            <summary>
+            Predstavlja grad iz koje je proizvod sa oglasa
+            </summary>
+        </member>
+        <member name="P:ReactionService.Entities.PostMock.Address">
+            <summary>
+            Predstavlja adresu iz koje je proizvod sa oglasa
+            </summary>
         </member>
         <member name="T:ReactionService.Entities.Reaction">
             <summary>
@@ -164,6 +300,11 @@
         <member name="P:ReactionService.Entities.ReactionType.ReactionTypeImage">
             <summary>
             Predstavlja url do slike tipa reakcije.
+            </summary>
+        </member>
+        <member name="T:ReactionService.Entities.User">
+            <summary>
+            Predstavlja model korisnika koji ce se koristiti za autorizaciju
             </summary>
         </member>
         <member name="T:ReactionService.Models.ReactionCreateDto">

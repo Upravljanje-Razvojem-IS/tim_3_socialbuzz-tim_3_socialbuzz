@@ -7,6 +7,6 @@ namespace ReactionService.Data
 {
     public interface IUserMockRepository
     {
-        public bool CheckIfUserExists(string username, string password);
+        public bool AuthorizeUser(string headerKey);
     }
 }
