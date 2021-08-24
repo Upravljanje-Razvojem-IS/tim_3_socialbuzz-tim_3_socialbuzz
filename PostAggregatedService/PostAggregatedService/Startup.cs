@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PostAggregatedService.Data;
+using PostAggregatedService.Data.LoggerMocks;
 using PostAggregatedService.Data.PostMocks;
 using PostAggregatedService.Data.UserMocks;
 using PostAggregatedService.DataLayer;
@@ -86,6 +87,7 @@ namespace PostAggregatedService
             services.AddScoped<IPostAggregatedRepository, PostAggregatedRepository>();
             services.AddSingleton<IUserMockRepository, UserMockRepository>();
             services.AddSingleton<IPostMockRepository, PostMockRepository>();
+            services.AddSingleton(typeof(ILoggerMockRepository<>), typeof(LoggerMockRepository<>));
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("PostAggregatedOpenApiSpecification",

@@ -7,7 +7,6 @@ C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\Reac
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\ReactionService.runtimeconfig.dev.json
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\ReactionService.dll
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\ReactionService.pdb
-C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.csprojAssemblyReference.cache
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.AssemblyInfoInputs.cache
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.AssemblyInfo.cs
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.RazorTargetAssemblyInfo.cache
@@ -69,3 +68,5 @@ C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\Reac
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.csproj.CoreCompileInputs.cache
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\obj\Debug\netcoreapp3.1\ReactionService.csprojAssemblyReference.cache
+C:\Users\Ana\Source\Repos\tim_3_socialbuzz-tim_3_socialbuzz\ReactionService\ReactionService\bin\Debug\netcoreapp3.1\Postman\URIS.postman_collection.json

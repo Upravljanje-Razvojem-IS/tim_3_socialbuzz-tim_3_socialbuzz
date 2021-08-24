@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using ReactionService.Data;
+using ReactionService.Data.LoggerMocks;
 using ReactionService.Entities;
 using ReactionService.Models;
 using System;
@@ -20,14 +21,16 @@ namespace ReactionService.Controllers
         private readonly IUserMockRepository userMockRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly ILoggerMockRepository<ReactionTypeController> logger;
 
         public ReactionTypeController(IReactionTypeRepository reactionTypeRepository,IUserMockRepository userMockRepository,
-                                        LinkGenerator linkGenerator, IMapper mapper)
+                                        LinkGenerator linkGenerator, IMapper mapper, ILoggerMockRepository<ReactionTypeController> logger)
         {
             this.reactionTypeRepository = reactionTypeRepository;
             this.userMockRepository = userMockRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -58,6 +61,7 @@ namespace ReactionService.Controllers
             {
                 return NoContent();
             }
+            logger.LogInformation("Successfully listed all reactions types");
             return Ok(mapper.Map<List<ReactionTypeDto>>(reactions));
         }
 
@@ -90,6 +94,7 @@ namespace ReactionService.Controllers
             {
                 return NoContent();
             }
+            logger.LogInformation("Successfully listed reaction type with the exact ID");
             return Ok(mapper.Map<ReactionTypeDto>(reactionType));
         }
 
@@ -128,10 +133,12 @@ namespace ReactionService.Controllers
 
                 var reaction = reactionTypeRepository.CreateReactionType(reactionTypeEntity);
                 string location = linkGenerator.GetPathByAction("GetReactionType", "ReactionType", new { reactionTypeId = reaction.ReactionTypeID });
+                logger.LogInformation("Successfully created reaction type");
                 return Created(location, mapper.Map<ReactionTypeDto>(reaction));
             }
-            catch
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when creating reaction type " + ex.Message);
                 return StatusCode(StatusCodes.Status400BadRequest, "Create error, not acceptable value");
             }
             
@@ -168,10 +175,12 @@ namespace ReactionService.Controllers
                     return NotFound();
                 }
                 reactionTypeRepository.DeleteReactionType(reactionTypeId);
+                logger.LogInformation("Successfully deleted reaction type with the exact ID");
                 return NoContent();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                logger.LogError(ex, "Error when deleting reaction type " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }
@@ -214,10 +223,12 @@ namespace ReactionService.Controllers
                 var reactionTypeEntity = mapper.Map<ReactionType>(reactionType);
 
                 var reaction = reactionTypeRepository.UpdateReactionType(reactionTypeEntity);
+                logger.LogInformation("Successfully updated reaction type");
                 return Ok(mapper.Map<ReactionTypeDto>(reaction));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when updating reaction type " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }

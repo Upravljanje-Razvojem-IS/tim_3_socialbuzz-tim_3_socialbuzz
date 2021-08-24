@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
 using ReactionService.Data;
 using ReactionService.Data.BlockingMocks;
+using ReactionService.Data.LoggerMocks;
 using ReactionService.Data.PostMocks;
 using ReactionService.Entities;
 using ReactionService.Models;
@@ -25,9 +26,11 @@ namespace ReactionService.Controllers
         private readonly IUserMockRepository userMockRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly ILoggerMockRepository<ReactionController> logger;
 
         public ReactionController(IReactionRepository reactionRepository, IPostMockRepository postMockRepository, IUserMockRepository userMockRepository,
-                                    IBlockingMockRepository blockingMockRepository, LinkGenerator linkGenerator, IMapper mapper)
+                                    IBlockingMockRepository blockingMockRepository, LinkGenerator linkGenerator, IMapper mapper,
+                                    ILoggerMockRepository<ReactionController> logger)
         {
             this.reactionRepository = reactionRepository;
             this.postMockRepository = postMockRepository;
@@ -35,6 +38,7 @@ namespace ReactionService.Controllers
             this.userMockRepository = userMockRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -71,6 +75,7 @@ namespace ReactionService.Controllers
             {
                 return NoContent();
             }
+            logger.LogInformation("Successfully listed all reactions");
             return Ok(mapper.Map<List<ReactionDto>>(reactions));
         }
 
@@ -110,6 +115,7 @@ namespace ReactionService.Controllers
             {
                 return NoContent();
             }
+            logger.LogInformation("Successfully listed reaction with the exact ID");
             return Ok(mapper.Map<ReactionDto>(reaction));
         }
 
@@ -173,10 +179,12 @@ namespace ReactionService.Controllers
 
                 var r = reactionRepository.CreateReaction(reactionEntity);
                 string location = linkGenerator.GetPathByAction("GetReaction", "Reaction", new { reactionId = r.ReactionId });
+                logger.LogInformation("Successfully created reaction");
                 return Created(location, mapper.Map<ReactionDto>(r));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when creating reaction " + ex.Message);
                 return StatusCode(StatusCodes.Status422UnprocessableEntity, "Create error, not acceptable value");
             }
         }
@@ -223,10 +231,12 @@ namespace ReactionService.Controllers
                     return StatusCode(StatusCodes.Status400BadRequest, "User is blocked or have blocked another user");
                 }
                 reactionRepository.DeleteReaction(reactionId);
+                logger.LogInformation("Successfully deleted reaction with the exact ID");
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when deleting reaction " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }
@@ -293,10 +303,12 @@ namespace ReactionService.Controllers
                 }
 
                 Reaction r = reactionRepository.UpdateReaction(reactionEntity);
+                logger.LogInformation("Successfully udated reaction");
                 return Ok(mapper.Map<ReactionDto>(r));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when updating reaction " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }

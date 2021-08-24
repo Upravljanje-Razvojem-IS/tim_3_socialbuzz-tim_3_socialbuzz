@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "b18e1bcc-518e-4378-9a38-f05ebd0521d0",
+		"name": "URIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ReactionService",
+			"item": [
+				{
+					"name": "GetReactionTypes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44200/api/reactionTypes?=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactionTypes"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetReactionTypeById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44200/api/reactionTypes/77be3bf1-5df2-4fcb-a89a-dfebc0b69b1f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactionTypes",
+								"77be3bf1-5df2-4fcb-a89a-dfebc0b69b1f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateReactionType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reactionTypeName\": \"LikeExample\",\r\n    \"reactionTypeImage\": \"likeImage.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44200/api/reactionTypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactionTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetReactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44200/api/reactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetReactionById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44200/api/reactions/d06e3c0a-0291-4dfd-b99f-07d0f6aa4501",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactions",
+								"d06e3c0a-0291-4dfd-b99f-07d0f6aa4501"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateReaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"reactionTypeId\": \"435e5a56-67fa-4262-8175-0ac53e712b7b\",\r\n        \"day\": 20,\r\n        \"month\": 4,\r\n        \"year\": 2019\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44200/api/reactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateReaction",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reactionId\": \"ffac5e12-8452-4a82-7d83-08d96563c36c\",\r\n    \"reactionTypeId\": \"435e5a56-67fa-4262-8175-0ac53e712b7b\",\r\n    \"day\": 21,\r\n    \"month\": 4,\r\n    \"year\": 2019\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44200/api/reactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteReaction",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44200/api/reactions/d06e3c0a-0291-4dfd-b99f-07d0f6aa4501?=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactions",
+								"d06e3c0a-0291-4dfd-b99f-07d0f6aa4501"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateReactionType",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reactionTypeID\": \"dfd6fa66-ce84-43c9-b366-044f4102afdf\",\r\n    \"reactionTypeName\": \"LikeExample\",\r\n    \"reactionTypeImage\": \"likeImage.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44200/api/reactionTypes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactionTypes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteReactionType",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44200/api/reactionTypes/77be3bf1-5df2-4fcb-a89a-dfebc0b69b1f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44200",
+							"path": [
+								"api",
+								"reactionTypes",
+								"77be3bf1-5df2-4fcb-a89a-dfebc0b69b1f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PostAggregatedService",
+			"item": [
+				{
+					"name": "GetPostAggregatedDetails",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44100/api/postAggregatedDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44100",
+							"path": [
+								"api",
+								"postAggregatedDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostAggregatedById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44100/api/postAggregatedDetails/d221da3e-f9d5-45d5-a44c-15479d3b7b21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44100",
+							"path": [
+								"api",
+								"postAggregatedDetails",
+								"d221da3e-f9d5-45d5-a44c-15479d3b7b21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePostAggregated",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postId\": \"71a1d81c-7fea-4e9a-bb29-541e165fc198\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44100/api/postAggregatedDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44100",
+							"path": [
+								"api",
+								"postAggregatedDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePostAggregated",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postAggregatedId\": \"d221da3e-f9d5-45d5-a44c-15479d3b7b21\",\r\n    \"postId\": \"71a1d81c-7fea-4e9a-bb29-541e165fc198\",\r\n    \"numberOfVisits\": 50,\r\n    \"numberOfComments\": 150,\r\n    \"numberOfLikes\": 15,\r\n    \"numberOfDislikes\": 9,\r\n    \"numberOfSmileys\": 3,\r\n    \"numberOfHearts\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44100/api/postAggregatedDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44100",
+							"path": [
+								"api",
+								"postAggregatedDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePostAggregated",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "UserKey",
+								"value": "VerySecretUserKeyForAuthorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:44100/api/postAggregatedDetails/d221da3e-f9d5-45d5-a44c-15479d3b7b21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44100",
+							"path": [
+								"api",
+								"postAggregatedDetails",
+								"d221da3e-f9d5-45d5-a44c-15479d3b7b21"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

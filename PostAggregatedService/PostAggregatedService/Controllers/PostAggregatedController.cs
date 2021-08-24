@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using PostAggregatedService.Data.UserMocks;
 using PostAggregatedService.Data.PostMocks;
+using PostAggregatedService.Data.LoggerMocks;
 
 namespace PostAggregatedService.Controllers
 {
@@ -21,17 +22,20 @@ namespace PostAggregatedService.Controllers
         private readonly IPostAggregatedRepository postAggregatedRepository;
         private readonly IUserMockRepository userMockRepository;
         private readonly IPostMockRepository postMockRepository;
+        private readonly ILoggerMockRepository<PostAggregatedController> logger;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
         public PostAggregatedController(IPostAggregatedRepository postAggregatedRepository, IUserMockRepository userMockRepository,
-                                            IPostMockRepository postMockRepository, LinkGenerator linkGenerator, IMapper mapper)
+                                            IPostMockRepository postMockRepository, LinkGenerator linkGenerator, IMapper mapper,
+                                            ILoggerMockRepository<PostAggregatedController> logger)
         {
             this.postAggregatedRepository = postAggregatedRepository;
             this.userMockRepository = userMockRepository;
             this.postMockRepository = postMockRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -69,6 +73,7 @@ namespace PostAggregatedService.Controllers
             {
                 return NoContent();
             }
+            logger.LogInformation("Successfully listed all post aggregated details");
             return Ok(mapper.Map<List<PostAggregatedDto>>(PostAggregated));
         }
 
@@ -107,6 +112,7 @@ namespace PostAggregatedService.Controllers
             {
                 return NoContent();
             }
+            logger.LogInformation("Successfully listed post aggregated details with the exact ID");
             return Ok(mapper.Map<PostAggregatedDto>(PostAggregated));
         }
 
@@ -153,14 +159,17 @@ namespace PostAggregatedService.Controllers
 
                 var p = postAggregatedRepository.CreatePostAggregated(PostAggregatedEntity);
                 string location = linkGenerator.GetPathByAction("GetPostAggregated", "PostAggregated", new { postAggregatedId = p.PostAggregatedId });
+                logger.LogInformation("Successfully created new post aggregated details");
                 return Created(location, mapper.Map<PostAggregatedDto>(p));
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Create error, internal error.");
+                logger.LogError(ex, "Error when creating new post aggregated details " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Create error, internal error.");               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when creating new post aggregated details " + ex.Message);
                 return StatusCode(StatusCodes.Status406NotAcceptable, "Create error, not acceptable value.");
             }
 
@@ -205,10 +214,12 @@ namespace PostAggregatedService.Controllers
                     return NotFound();
                 }
                 postAggregatedRepository.DeletePostAggregated(postAggregatedId);
+                logger.LogInformation("Successfully deleted post aggregated details with the exact ID");
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when deleting post aggregated details " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }
@@ -264,10 +275,12 @@ namespace PostAggregatedService.Controllers
                 var PostAggregatedEntity = mapper.Map<PostAggregated>(PostAggregated);
 
                 var p = postAggregatedRepository.UpdatePostAggregated(PostAggregatedEntity);
+                logger.LogInformation("Successfully updated post aggregated details with the exact ID");
                 return Ok(mapper.Map<PostAggregatedDto>(p));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError(ex, "Error when updating post aggregated details " + ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error, internal error.");
             }
         }
