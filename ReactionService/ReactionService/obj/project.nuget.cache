@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hoJwRy5Rv++w8aRBR/w4owRjCa3gZmDRirstf2W4bznnBi/mQ9ntVCQLCoWVjHKQtTbWepSvCxjA6IaycNPwZQ==",
+  "dgSpecHash": "13iWi8Z61PyaiwjTM7RPEEHcjzLXVq4sP3A7SnksM4ymCqccnW5J4/vwLin2WgdVSGEAYHkLRNyWCxUPys7NMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ana\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Ana\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
-    "C:\\Users\\Ana\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Ana\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ana\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Ana\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

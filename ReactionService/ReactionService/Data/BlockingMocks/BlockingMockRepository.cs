@@ -22,7 +22,7 @@ namespace ReactionService.Data.BlockingMocks
                 new BlockingMock
                 {
                     BlockingMockId = Guid.Parse("907d1e78-dbc9-4cf5-a808-1a4d308703ee"),
-                    UserThatBlocks = Guid.Parse("3ee75796-6f47-4243-9d5b-c3baef489dda"),
+                    UserThatBlocks = Guid.Parse("c01222b7-9f4e-4385-b674-c05f557bed60"),
                     BlockedUser = Guid.Parse("e8e1a827-88d6-49bd-9f1b-cb3b722eae28")
                 },
                 new BlockingMock

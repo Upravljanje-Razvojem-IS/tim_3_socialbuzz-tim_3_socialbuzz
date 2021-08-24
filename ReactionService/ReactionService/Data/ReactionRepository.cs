@@ -22,7 +22,6 @@ namespace ReactionService.Data
             reaction.ReactionId = new Guid();
             contextDb.Reaction.Add(reaction);
             contextDb.SaveChanges();
-            //Reactions.Add(reaction);
             return GetReactionById(reaction.ReactionId);
         }
 
@@ -31,7 +30,6 @@ namespace ReactionService.Data
             var reaction = GetReactionById(reactionId);
             contextDb.Reaction.Remove(reaction);
             contextDb.SaveChanges();
-            //Reactions.Remove(reaction);
         }
 
         public Reaction GetReactionById(Guid reactionId)
