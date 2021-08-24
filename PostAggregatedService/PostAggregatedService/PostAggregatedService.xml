@@ -4,52 +4,89 @@
         <name>PostAggregatedService</name>
     </assembly>
     <members>
-        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregatedDetails">
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregatedDetails(System.String)">
             <summary>
             Vraća sve agregirane podatke.
             </summary>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <returns>Lista agregiranih podataka</returns>
             <response code="200">Uspešno izlistani svi agregirani podaci</response>
             <response code="204">Agregirani podaci ne postoje</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <response code="404">Oglas ne postoji</response>
+            <remarks>
+            Primer zahteva za izlistavanje svih agregiranih podataka \
+            GET 'http://localhost:44100/api/postAggregatedDetails/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregated(System.Guid)">
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.GetPostAggregated(System.Guid,System.String)">
             <summary>
             Vraća agregirane podatke na osnovu ID-ja.
             </summary>
             <param name="postAggregatedId">ID agregiranih podataka</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="200">Uspešno izlistani agregirani podaci</response>
             <response code="204">Agregirani podaci sa datim ID-em ne postoje</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <response code="404">Oglas ne postoji</response>
+            <remarks>
+            Primer zahteva za izlistavanje agregiranih podataka sa datim ID-em \
+            GET 'http://localhost:44100/api/postAggregatedDetails/postAggregatedId' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.CreatePostAggregated(PostAggregatedService.Models.PostAggregatedCreateDto)">
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.CreatePostAggregated(PostAggregatedService.Models.PostAggregatedCreateDto,System.String)">
             <summary>
             Kreira nove agregirane podatke.
             </summary>
             <param name="PostAggregated">Model agregiranih podataka</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <returns>Kreiranu reakciju iz liste.</returns>
             <response code="406">Vrednost određenih atributa nije dozvoljen.</response>
             <response code="201">Uspešno kreirani agregirani podaci</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <response code="404">Oglas ne postoji</response>
+            <remarks>
+            Primer zahteva za kreiranje agregiranih podataka \
+            POST 'http://localhost:44100/api/postAggregatedDetails/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization' \
+            { \
+            "postId": "71a1d81c-7fea-4e9a-bb29-541e165fc198" \
+            }
+            </remarks>
         </member>
-        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.DeletePostAggregated(System.Guid)">
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.DeletePostAggregated(System.Guid,System.String)">
             <summary>
             Vrši brisanje agregiranih podataka na osnovu ID-ja.
             </summary>
             <param name="postAggregatedId">ID agregiranih podataka</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <response code="404">Nisu pronađeni agregirani podaci sa tim ID-em</response>
             <response code="204">Uspešno obrisani agregirani podaci</response>
             <response code="500">Greška pri brisanju agregiranih podataka</response>
+            <response code="401">Autorizacija je neuspešna</response>
+            <remarks>
+            Primer zahteva za brisanje agregiranih podataka \
+            DELETE 'http://localhost:44100/api/postAggregatedDetails/postAggregatedId' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization'
+            </remarks>
         </member>
-        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.UpdatePostAggregated(PostAggregatedService.Models.PostAggregatedUpdateDto)">
+        <member name="M:PostAggregatedService.Controllers.PostAggregatedController.UpdatePostAggregated(PostAggregatedService.Models.PostAggregatedUpdateDto,System.String)">
             <summary>
             Ažurira agregirane podatke.
             </summary>
             <param name="PostAggregated">Model agregiranih podataka koji se ažuriraju</param>
+            <param name="UserKey">Bearer token za autorizaciju</param>
             <returns>Ažurirane agregirane podatke iz liste.</returns>
             <response code="200">Uspešno ažurirani agregirani podaci</response>
             <response code="404">Agregirani podaci sa datim ID-em ne postoje</response>
             <response code="500">Greška pri ažuriranju agegiranih podataka</response>
+            <response code="401">Autorizacija je neuspešna</response>
             <remarks>
-            Primer zahteva za kreiranje novih agregiranih podataka \
-            POST /api/PostAggregatedDetails \
+            Primer zahteva za ažuriranje novih agregiranih podataka \
+            PUT 'http://localhost:44100/api/postAggregatedDetails/' \
+                --header 'Authorization: VerySecretUserKeyForAuthorization' \
             {   \
                 "postAggregatedId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
                 "postId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", \
@@ -59,8 +96,13 @@
                  "numberOfDislikes": 100, \
                  "numberOfSmileys": 7, \
                  "numberOfHearts": 6 \
-                 }
+            }
             </remarks>
+        </member>
+        <member name="T:PostAggregatedService.Data.UserMocks.UserMockRepository">
+            <summary>
+            Lažni (mock) repozitorijum u ulozi korisnika
+            </summary>
         </member>
         <member name="T:PostAggregatedService.Entities.PostAggregated">
             <summary>
@@ -105,6 +147,66 @@
         <member name="P:PostAggregatedService.Entities.PostAggregated.NumberOfHearts">
             <summary>
             Predstavlja broj srca oglasa.
+            </summary>
+        </member>
+        <member name="T:PostAggregatedService.Entities.PostMock">
+            <summary>
+            Predstavlja lažni model oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.PostId">
+            <summary>
+            Predstavlja ID oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.UserId">
+            <summary>
+            Predstavlja ID oglasa.
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.Date">
+            <summary>
+            Predstavlja datum objavljivanja oglasa
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.Title">
+            <summary>
+            Predstavlja naziv oglasa
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.Description">
+            <summary>
+            Predstavlja opis oglasa
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.Country">
+            <summary>
+            Predstavlja državu iz koje je proizvod sa oglasa
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.City">
+            <summary>
+            Predstavlja grad iz koje je proizvod sa oglasa
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.PostMock.Address">
+            <summary>
+            Predstavlja adresu iz koje je proizvod sa oglasa
+            </summary>
+        </member>
+        <member name="T:PostAggregatedService.Entities.UserMock">
+            <summary>
+            Predstavlja model korisnika koji ce se koristiti za autorizaciju
+            </summary>
+        </member>
+        <member name="F:PostAggregatedService.Entities.UserMock.SectionName">
+            <summary>
+            Predstavlja podatke aplikacije
+            </summary>
+        </member>
+        <member name="P:PostAggregatedService.Entities.UserMock.UserKey">
+            <summary>
+            Predstavlja ključ korisnika za autorizaciju
             </summary>
         </member>
         <member name="T:PostAggregatedService.Models.PostAggregatedCreateDto">

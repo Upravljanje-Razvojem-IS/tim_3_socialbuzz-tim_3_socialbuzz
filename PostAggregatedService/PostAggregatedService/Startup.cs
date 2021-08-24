@@ -17,7 +17,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PostAggregatedService.Data;
+using PostAggregatedService.Data.PostMocks;
+using PostAggregatedService.Data.UserMocks;
 using PostAggregatedService.DataLayer;
+using PostAggregatedService.Entities;
 
 namespace PostAggregatedService
 {
@@ -33,8 +36,10 @@ namespace PostAggregatedService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<UserMock>(Configuration.GetSection(UserMock.SectionName));
             services.AddControllersWithViews();
             services.AddDbContext<PostAggregatedDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PostAggregatedDatabase")));
+            services.AddOptions();
 
             services.AddControllers(setup =>
             {
@@ -79,6 +84,8 @@ namespace PostAggregatedService
             }); ;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IPostAggregatedRepository, PostAggregatedRepository>();
+            services.AddSingleton<IUserMockRepository, UserMockRepository>();
+            services.AddSingleton<IPostMockRepository, PostMockRepository>();
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("PostAggregatedOpenApiSpecification",
