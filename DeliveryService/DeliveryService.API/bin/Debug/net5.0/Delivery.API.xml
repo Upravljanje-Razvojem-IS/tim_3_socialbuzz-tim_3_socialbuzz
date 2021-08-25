@@ -1,0 +1,799 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>DeliveryAPI</name>
+  </assembly>
+  <members>
+    <member name="M:DeliveryService.API.Controllers.AddressController.GetAddresses(System.Guid)">
+      <summary>
+        Get all addresses with cityId parameter
+      </summary>
+      <param name="cityId">ID of city where address is</param>
+      <returns>Return list of all addresses in city with "cityId" id</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.AddressController.GetAddressById(System.Guid,System.Guid)">
+      <summary>
+        Get address with  specific cityId and addressId parameter
+      </summary>
+      <param name="cityId">ID of the city where address is</param>
+      <param name="addressId">ID of the returned address</param>
+      <returns>Address with specific addressId</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.AddressController.PostAddress(System.Guid,DeliveryService.API.Models.AddressModels.AddressPostBody)">
+      <summary>
+        Create a new Address in City with specific "cityId"
+      </summary>
+      <param name="cityId">ID of specific city</param>
+      <param name="address">New Address body</param>
+      <returns>Created new Address with 201 status code</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.AddressController.PutAddress(System.Guid,System.Guid,DeliveryService.API.Models.AddressModels.AddressPutBody)">
+      <summary>
+        Update address with specific "addressId"
+      </summary>
+      <param name="cityId">ID of the city where address is</param>
+      <param name="addressId">ID of the updated address</param>
+      <param name="address">New body to address</param>
+      <returns>Updated Address</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.AddressController.DeleteAddress(System.Guid,System.Guid)">
+      <summary>
+        Delete address with specific addressID
+      </summary>
+      <param name="cityId">ID of city where address is</param>
+      <param name="addressId">ID of deleted address</param>
+      <returns></returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.CityController.GetCities">
+      <summary>
+        Get all cities
+      </summary>
+      <returns>Return list of all cities</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.CityController.GetCityById(System.Guid)">
+      <summary>
+        Get city with specific cityId
+      </summary>
+      <param name="cityId">ID of returned city</param>
+      <returns>Returns city with specific cityId"</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.CityController.PostCity(DeliveryService.API.Models.CityModels.CityPostBody)">
+      <summary>
+        Create a new City
+      </summary>
+      <param name="city">Body of the new City</param>
+      <returns>Created new City with 201 status code</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.CityController.PutCity(System.Guid,DeliveryService.API.Models.CityModels.CityPutBody)">
+      <summary>
+        Update city
+      </summary>
+      <param name="cityId">ID of updated city</param>
+      <param name="city">New city body</param>
+      <returns>Updated city</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.CityController.DeleteCity(System.Guid)">
+      <summary>
+        Delete city with specific cityId
+      </summary>
+      <param name="cityId">ID of deleted city</param>
+      <returns></returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.PriceDistanceController.GetPriceDistance">
+      <summary>
+        Get all PriceDistance
+      </summary>
+      <returns>Returns list of all PriceDistances</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.PriceDistanceController.GetPriceDistanceById(System.Guid)">
+      <summary>
+        Get PriceDistance by specific  ID
+      </summary>
+      <param name="distanceId">ID of PriceDistance</param>
+      <returns>Distance with specific distanceId</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.PriceDistanceController.PostPriceDistance(DeliveryService.API.Models.PriceDistanceModels.PriceDistancePostBody)">
+      <summary>
+        Post PriceDistance
+      </summary>
+      <param name="priceDistance">New PriceDistance body</param>
+      <returns>Created new PriceDistance with 201</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.PriceDistanceController.PutPriceDistance(System.Guid,DeliveryService.API.Models.PriceDistanceModels.PriceDistancePutBody)">
+      <summary>
+        Update PriceDistance
+      </summary>
+      <param name="distanceId">ID of updated PriceDistance</param>
+      <param name="priceDistance">New PriceDistance body</param>
+      <returns>Updated PriceDistance</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.PriceDistanceController.DeletePriceDistance(System.Guid)">
+      <summary>
+        Delete PriceDistance with specific distanceID
+      </summary>
+      <param name="distanceId">ID of deleted PriceDistance</param>
+      <returns></returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.SaleController.GetSales">
+      <summary>
+        Get all Sales
+      </summary>
+      <returns>List of all sales</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.SaleController.GetSaleById(System.Guid)">
+      <summary>
+        Get Sale by specific ID
+      </summary>
+      <param name="saleId">ID of specific Sale</param>
+      <returns>Sale with specific saleId</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.SaleController.PostSale(DeliveryService.API.Models.SaleModels.SalePostBody)">
+      <summary>
+        Create new Sale
+      </summary>
+      <param name="sale">Body of new Sale</param>
+      <returns>Created new Sale with 201 status code</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.SaleController.PutSale(System.Guid,DeliveryService.API.Models.SaleModels.SalePutBody)">
+      <summary>
+        Update specific Sale
+      </summary>
+      <param name="saleId">ID of updated Sale</param>
+      <param name="sale">New body of Sale</param>
+      <returns>Updated Sale</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.SaleController.DeleteSale(System.Guid)">
+      <summary>
+        Delete Sale
+      </summary>
+      <param name="saleId">ID of deleted Sale</param>
+      <returns></returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.WeightRangeController.GetWeightRange">
+      <summary>
+        Get all WeightRanges
+      </summary>
+      <returns>List of all WeightRanges</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.WeightRangeController.GetWeightRangeById(System.Guid)">
+      <summary>
+        Get WeightRange by specific ID
+      </summary>
+      <param name="weightId">Id of specific WeightRange</param>
+      <returns>WeightRange with specific weightId</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.WeightRangeController.PostWeightRange(DeliveryService.API.Models.WeightRangeModels.WeightRangePostBody)">
+      <summary>
+        Post new WeightRange
+      </summary>
+      <param name="weightRange">Body of new WeightRange</param>
+      <returns>Created WeightRange with 201 status code</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.WeightRangeController.PutWeightRange(System.Guid,DeliveryService.API.Models.WeightRangeModels.WeightRangePutBody)">
+      <summary>
+        Update specific WeightRange
+      </summary>
+      <param name="weightId">ID of updated WeightRange</param>
+      <param name="weightRange">New body of WeightRange</param>
+      <returns>New WeightRange</returns>
+    </member>
+    <member name="M:DeliveryService.API.Controllers.WeightRangeController.DeleteWeithRange(System.Guid)">
+      <summary>
+        Delete speific WeightRange
+      </summary>
+      <param name="weightId">ID of deleted WeightRange</param>
+      <returns></returns>
+    </member>
+    <member name="T:DeliveryService.API.Models.AddressModels.AddressConfirmation">
+      <summary>
+        Address confirmation model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressConfirmation.Id">
+      <summary>
+        ID of AddressConfirmation
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressConfirmation.Street">
+      <summary>
+        Street in address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressConfirmation.Number">
+      <summary>
+        Address number
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressDetails.Id">
+      <summary>
+        Id of AddressDetails
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressDetails.Street">
+      <summary>
+        Street in address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressDetails.Number">
+      <summary>
+        Address number
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressDetails.CityId">
+      <summary>
+        ID of City
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressDetails.City">
+      <summary>
+        Body of City
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.AddressModels.AddressOverview">
+      <summary>
+        Address overview model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressOverview.Id">
+      <summary>
+        Id of AddressOverview
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressOverview.Street">
+      <summary>
+        Street in address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressOverview.Number">
+      <summary>
+        Address number
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressOverview.CityId">
+      <summary>
+        ID of City
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.AddressModels.AddressPostBody">
+      <summary>
+        Address model for post
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressPostBody.Street">
+      <summary>
+        Street in address is required
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressPostBody.Number">
+      <summary>
+        Number in address is required
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.AddressModels.AddressPutBody">
+      <summary>
+        Address model for put
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressPutBody.Street">
+      <summary>
+        Street in address is reqired
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.AddressModels.AddressPutBody.Number">
+      <summary>
+        Number in address is required
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.CityModels.CityConfirmation">
+      <summary>
+        CityConfirmation model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityConfirmation.Id">
+      <summary>
+        City confirmation Id
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityConfirmation.Name">
+      <summary>
+        City Name
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityConfirmation.PostalCode">
+      <summary>
+        City PostalCode
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityConfirmation.Latitude">
+      <summary>
+        City Latitude
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityConfirmation.Longitude">
+      <summary>
+        City Longitude
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityDetails.Id">
+      <summary>
+        City details Id
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityDetails.Name">
+      <summary>
+        City Name
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityDetails.PostalCode">
+      <summary>
+        City PostalCode
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityDetails.Latitude">
+      <summary>
+        City Latitude
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityDetails.Longitude">
+      <summary>
+        City Longitude
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.CityModels.CityOverview">
+      <summary>
+        City overview model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityOverview.Id">
+      <summary>
+        City overview Id
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityOverview.Name">
+      <summary>
+        City Name
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityOverview.PostalCode">
+      <summary>
+        City PostalCode
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityOverview.Latitude">
+      <summary>
+        City Latitude
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityOverview.Longitude">
+      <summary>
+        City Longitude
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.CityModels.CityPostBody">
+      <summary>
+        City post model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPostBody.Name">
+      <summary>
+        City Name
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPostBody.PostalCode">
+      <summary>
+        City PostalCode
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPostBody.Latitude">
+      <summary>
+        City Latitude
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPostBody.Longitude">
+      <summary>
+        City Longitude
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.CityModels.CityPutBody">
+      <summary>
+        City put model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPutBody.Name">
+      <summary>
+        City Name
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPutBody.PostalCode">
+      <summary>
+        City PostalCode
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPutBody.Latitude">
+      <summary>
+        City Latitude
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.CityModels.CityPutBody.Longitude">
+      <summary>
+        City Longitude
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceConfirmation">
+      <summary>
+        PriceDistanceConfirmation model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceConfirmation.Id">
+      <summary>
+        PriceDistance confirmation model ID
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceConfirmation.MinimalDistance">
+      <summary>
+        MinimalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceConfirmation.MaximalDistance">
+      <summary>
+        MaximalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceConfirmation.Price">
+      <summary>
+        Distance price
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceDetails">
+      <summary>
+        Price Distance details model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceDetails.Id">
+      <summary>
+        PriceDistance details model ID
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceDetails.MinimalDistance">
+      <summary>
+        MinimalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceDetails.MaximalDistance">
+      <summary>
+        MaximalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceDetails.Price">
+      <summary>
+        Distance price
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceOverview">
+      <summary>
+        PriceDistance overview model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceOverview.Id">
+      <summary>
+        PriceDistance overview model ID
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceOverview.MinimalDistance">
+      <summary>
+        MinimalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceOverview.MaximalDistance">
+      <summary>
+        MaximalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistanceOverview.Price">
+      <summary>
+        Distance price
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePostBody">
+      <summary>
+        PriceDistance post model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePostBody.MinimalDistance">
+      <summary>
+        MinimalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePostBody.MaximalDistance">
+      <summary>
+        MaximalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePostBody.Price">
+      <summary>
+        Price for some distance
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePutBody">
+      <summary>
+        PriceDistance put model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePutBody.MinimalDistance">
+      <summary>
+        MinimalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePutBody.MaximalDistance">
+      <summary>
+        MaximalDistance for some price
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.PriceDistanceModels.PriceDistancePutBody.Price">
+      <summary>
+        Price for some distance
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.SaleModels.SaleConfirmation">
+      <summary>
+        Sale confirmation model
+      </summary>
+
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleConfirmation.ProductId">
+      <summary>
+        ID of confirmation product
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleConfirmation.WeightRangeId">
+      <summary>
+        ID of sale Weight Range
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleConfirmation.PriceDistanceId">
+      <summary>
+        ID of sale Price Distance
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleConfirmation.FromAddressId">
+      <summary>
+        ID of sale FROM address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleConfirmation.ToAddressId">
+      <summary>
+        ID of sale TO address
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.SaleModels.SaleDetails">
+      <summary>
+        Purchase details model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.ProductId">
+      <summary>
+        ID of details product
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.WeightRangeId">
+      <summary>
+        ID of sale Weight Range
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.PriceDistanceId">
+      <summary>
+        ID of sale Price Distance
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.FromAddressId">
+      <summary>
+        ID of purchase FROM address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.ToAddressId">
+      <summary>
+        ID of sale TO address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.Pieces">
+      <summary>
+        Number of item pieces
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.TotalWeight">
+      <summary>
+        Sale total weight
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleDetails.TotalPriceWithWeightAndDistance">
+      <summary>
+        Total price for sale
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.SaleModels.SaleOverview">
+      <summary>
+        Sale overview model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleOverview.ProductId">
+      <summary>
+        ID of overview product
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleOverview.WeightRangeId">
+      <summary>
+        ID of sale Weight Range
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleOverview.PriceDistanceId">
+      <summary>
+        ID of sale Price Distance
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleOverview.FromAddressId">
+      <summary>
+        ID of sale FROM address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SaleOverview.ToAddressId">
+      <summary>
+        ID of sale TO address
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.SaleModels.SalePostBody">
+      <summary>
+        Sale POST model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePostBody.ProductId">
+      <summary>
+        ID of sale product
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePostBody.Pieces">
+      <summary>
+        Number of item pieces
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePostBody.FromAddressId">
+      <summary>
+        ID of sale FROM address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePostBody.ToAddressId">
+      <summary>
+        ID of purchase TO address
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.SaleModels.SalePutBody">
+      <summary>
+        Sale PUT model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePutBody.ProductId">
+      <summary>
+        ID of sale product
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePutBody.Pieces">
+      <summary>
+        Number of product pieces
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePutBody.FromAddressId">
+      <summary>
+        ID of sale FROM address
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.SaleModels.SalePutBody.ToAddressId">
+      <summary>
+        ID of sale TO address
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.WeightRangeModels.WeightRangeConfirmation">
+      <summary>
+        WEightRange Confirmation model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeConfirmation.Id">
+      <summary>
+        Weight range ID
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeConfirmation.MinimalWeight">
+      <summary>
+        MinimalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeConfirmation.MaximalWeight">
+      <summary>
+        MaximalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.WeightRangeModels.WeightRangeDetails">
+      <summary>
+        weightrange details model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeDetails.Id">
+      <summary>
+        Weight range ID
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeDetails.MinimalWeight">
+      <summary>
+        MinimalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeDetails.MaximalWeight">
+      <summary>
+        MaximalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeDetails.PriceCoefficient">
+      <summary>
+        Coefficient for calculating price
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.WeightRangeModels.WeightRangeOverview">
+      <summary>
+        WeightRange response model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeOverview.Id">
+      <summary>
+        Weight range ID
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeOverview.MinimalWeight">
+      <summary>
+        MinimalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangeOverview.MaximalWeight">
+      <summary>
+        MaximalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.WeightRangeModels.WeightRangePostBody">
+      <summary>
+        WeightRange post model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangePostBody.MinimalWeight">
+      <summary>
+        MinimalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangePostBody.MaximalWeight">
+      <summary>
+        MaximalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangePostBody.PriceCoefficient">
+      <summary>
+        Coefficient for calculating price
+      </summary>
+    </member>
+    <member name="T:DeliveryService.API.Models.WeightRangeModels.WeightRangePutBody">
+      <summary>
+        WeightRange put model
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangePutBody.MinimalWeight">
+      <summary>
+        MinimalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangePutBody.MaximalWeight">
+      <summary>
+        MaximalWeight of items for price coefficient
+      </summary>
+    </member>
+    <member name="P:DeliveryService.API.Models.WeightRangeModels.WeightRangePutBody.PriceCoefficient">
+      <summary>
+        Coefficient for calculating price
+      </summary>
+    </member>
+  </members>
+</doc>

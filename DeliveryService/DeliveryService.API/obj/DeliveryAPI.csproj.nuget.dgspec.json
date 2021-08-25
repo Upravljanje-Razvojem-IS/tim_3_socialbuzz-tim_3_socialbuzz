@@ -1,0 +1,180 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.API\\DeliveryAPI.csproj": {}
+  },
+  "projects": {
+    "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.API\\DeliveryAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.API\\DeliveryAPI.csproj",
+        "projectName": "DeliveryAPI",
+        "projectPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.API\\DeliveryAPI.csproj",
+        "packagesPath": "C:\\Users\\Windows User\\.nuget\\packages\\",
+        "outputPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Windows User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net50"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net50": {
+            "projectReferences": {
+              "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj": {
+                "projectPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj"
+              },
+              "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Infrastructure\\DeliveryInfrastructure.csproj": {
+                "projectPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Infrastructure\\DeliveryInfrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net50": {
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.5.4, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj",
+        "projectName": "DeliveryCore",
+        "projectPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj",
+        "packagesPath": "C:\\Users\\Windows User\\.nuget\\packages\\",
+        "outputPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Windows User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net50"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net50": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net50": {}
+      }
+    },
+    "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Infrastructure\\DeliveryInfrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Infrastructure\\DeliveryInfrastructure.csproj",
+        "projectName": "DeliveryInfrastructure",
+        "projectPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Infrastructure\\DeliveryInfrastructure.csproj",
+        "packagesPath": "C:\\Users\\Windows User\\.nuget\\packages\\",
+        "outputPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Windows User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net50"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net50": {
+            "projectReferences": {
+              "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj": {
+                "projectPath": "D:\\Desktop\\DeliveryService\\DeliveryService\\Logistics.Core\\DeliveryCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net50": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.5, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}
