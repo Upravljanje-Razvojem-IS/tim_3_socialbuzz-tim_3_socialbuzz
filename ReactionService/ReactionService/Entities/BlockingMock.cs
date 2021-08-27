@@ -13,17 +13,17 @@ namespace ReactionService.Entities
         /// <summary>
         /// Predstavlja ID bloka.
         /// </summary>
-        public Guid BlockingMockId;
+        public Guid BlockingMockId { get; set; }
 
         /// <summary>
         /// Predstavlja ID korisnika koji blokira.
         /// </summary>
-        public Guid UserThatBlocks;
+        public Guid UserThatBlocks { get; set; }
 
         /// <summary>
         /// Predstavlja ID korisnika koji je blokiran.
         /// </summary>
-        public Guid BlockedUser;
+        public Guid BlockedUser { get; set; }
 
 
     }

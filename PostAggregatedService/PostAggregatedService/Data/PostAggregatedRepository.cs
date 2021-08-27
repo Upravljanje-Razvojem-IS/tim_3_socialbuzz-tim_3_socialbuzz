@@ -18,7 +18,7 @@ namespace PostAggregatedService.Data
 
         public PostAggregated CreatePostAggregated(PostAggregated postAggregated)
         {
-            postAggregated.PostAggregatedId = new Guid();
+            postAggregated.PostAggregatedId = Guid.NewGuid();
             contextDb.PostAggregated.Add(postAggregated);
             contextDb.SaveChanges();
             return GetPostAggregatedById(postAggregated.PostAggregatedId);

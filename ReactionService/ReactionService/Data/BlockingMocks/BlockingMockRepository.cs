@@ -8,7 +8,7 @@ namespace ReactionService.Data.BlockingMocks
 {
     public class BlockingMockRepository : IBlockingMockRepository
     {
-        List<BlockingMock> Blockings = new List<BlockingMock>();
+        readonly List<BlockingMock> Blockings = new List<BlockingMock>();
 
         public BlockingMockRepository()
         {
@@ -34,17 +34,17 @@ namespace ReactionService.Data.BlockingMocks
             });          
         }
 
-        public bool CheckIfUserIsBlocked(Guid userId, Guid blockedUserId)
+        public bool CheckIfUserIsBlocked(Guid userWhoBlocks, Guid userWhoIsBlocked)
         {
             foreach(BlockingMock b in Blockings)
             {
                 //korisnik je blokirao drugu osobu
-                if ( userId == b.UserThatBlocks && blockedUserId == b.BlockedUser )
+                if (userWhoBlocks == b.UserThatBlocks && userWhoIsBlocked == b.BlockedUser )
                 {
                     return true;
                 }
                 // korisnik je blokiran od strane druge osobe
-                if (userId == b.BlockedUser && blockedUserId == b.UserThatBlocks)
+                if (userWhoBlocks == b.BlockedUser && userWhoIsBlocked == b.UserThatBlocks)
                 {
                     return true;
                 }

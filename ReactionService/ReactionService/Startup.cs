@@ -68,7 +68,7 @@ namespace ReactionService
                         {
                             ContentTypes = { "application/problem+json" }
                         };
-                    };
+                    }
 
                     problemDetails.Status = StatusCodes.Status400BadRequest;
                     problemDetails.Title = "Došlo je do greške prilikom parsiranja poslatog sadržaja.";
@@ -77,7 +77,7 @@ namespace ReactionService
                         ContentTypes = { "application/problem+json" }
                     };
                 };
-            }); ;
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IReactionTypeRepository, ReactionTypeRepository>();
             services.AddScoped<IReactionRepository, ReactionRepository>();

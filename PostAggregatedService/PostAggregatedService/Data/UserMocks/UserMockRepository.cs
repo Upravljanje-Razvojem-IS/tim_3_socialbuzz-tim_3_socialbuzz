@@ -12,7 +12,6 @@ namespace PostAggregatedService.Data.UserMocks
     /// </summary>
     public class UserMockRepository : IUserMockRepository
     {
-        List<UserMock> Users = new List<UserMock>();
         private readonly IOptions<UserMock> options;
 
         public UserMockRepository(IOptions<UserMock> options)

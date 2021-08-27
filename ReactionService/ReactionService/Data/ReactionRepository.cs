@@ -10,7 +10,6 @@ namespace ReactionService.Data
     public class ReactionRepository : IReactionRepository
     {
         private readonly ReactionDbContext contextDb;
-        List<Reaction> Reactions = new List<Reaction>();
 
         public ReactionRepository(ReactionDbContext contextDb)
         {
@@ -19,7 +18,7 @@ namespace ReactionService.Data
 
         public Reaction CreateReaction(Reaction reaction)
         {
-            reaction.ReactionId = new Guid();
+            reaction.ReactionId = Guid.NewGuid();
             contextDb.Reaction.Add(reaction);
             contextDb.SaveChanges();
             return GetReactionById(reaction.ReactionId);

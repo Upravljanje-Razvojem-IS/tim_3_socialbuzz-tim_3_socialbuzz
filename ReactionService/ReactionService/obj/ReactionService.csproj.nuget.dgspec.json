@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj": {}
+    "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj": {
+    "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj",
+        "projectUniqueName": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj",
         "projectName": "ReactionService",
-        "projectPath": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj",
+        "projectPath": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\ReactionService.csproj",
         "packagesPath": "C:\\Users\\Ana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ana\\Source\\Repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\obj\\",
+        "outputPath": "C:\\Users\\Ana\\source\\repos\\tim_3_socialbuzz-tim_3_socialbuzz\\ReactionService\\ReactionService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ana\\AppData\\Roaming\\NuGet\\NuGet.Config",

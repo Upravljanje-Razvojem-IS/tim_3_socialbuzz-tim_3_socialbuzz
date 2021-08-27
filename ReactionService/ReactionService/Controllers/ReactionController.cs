@@ -128,6 +128,7 @@ namespace ReactionService.Controllers
         /// <response code="422">Pogrešno uneti podaci</response>
         /// <response code = "401" > Autorizacija je neuspešna</response>
         /// <response code = "404" > Oglas ne postoji</response>
+        /// <response code = "400" > Pogrešno poslat zahtev</response>
         /// <remarks>
         /// Primer zahteva za kreiranje jedne reakcije \
         /// POST 'http://localhost:44200/api/reactions/' \
@@ -198,6 +199,7 @@ namespace ReactionService.Controllers
         /// <response code="204">Uspešno obrisana reakcija</response>
         /// <response code="500">Greška pri brisanju reakcije</response>
         /// <response code="401">Autorizacija je neuspešna</response>
+        /// <response code = "400" >Pogrešno poslat zahtev</response>
         /// <remarks>
         /// Primer zahteva za brisanje jedne reakcije sa datim ID-em \
         /// DELETE 'http://localhost:44200/api/reactions/reactionId' \
@@ -250,6 +252,7 @@ namespace ReactionService.Controllers
         /// <response code="200">Uspešno ažurirana reakcija</response>
         /// <response code="500">Greška pri ažuriranju reakcije</response>
         /// <response code="401">Autorizacija je neuspešna</response>
+        /// <response code = "400" > Pogrešno poslat zahtev</response>
         /// <remarks>
         /// Primer zahteva za ažuriranje jedne reakcije sa datim ID-em \
         /// PUT 'http://localhost:44200/api/reactions/' \

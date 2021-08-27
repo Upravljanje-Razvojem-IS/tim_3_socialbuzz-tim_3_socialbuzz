@@ -209,17 +209,17 @@
             Predstavlja lažni model blokiranog korisnika.
             </summary>
         </member>
-        <member name="F:ReactionService.Entities.BlockingMock.BlockingMockId">
+        <member name="P:ReactionService.Entities.BlockingMock.BlockingMockId">
             <summary>
             Predstavlja ID bloka.
             </summary>
         </member>
-        <member name="F:ReactionService.Entities.BlockingMock.UserThatBlocks">
+        <member name="P:ReactionService.Entities.BlockingMock.UserThatBlocks">
             <summary>
             Predstavlja ID korisnika koji blokira.
             </summary>
         </member>
-        <member name="F:ReactionService.Entities.BlockingMock.BlockedUser">
+        <member name="P:ReactionService.Entities.BlockingMock.BlockedUser">
             <summary>
             Predstavlja ID korisnika koji je blokiran.
             </summary>

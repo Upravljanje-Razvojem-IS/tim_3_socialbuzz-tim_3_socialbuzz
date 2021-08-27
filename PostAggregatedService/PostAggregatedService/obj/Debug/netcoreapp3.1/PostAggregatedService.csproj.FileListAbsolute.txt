@@ -70,3 +70,4 @@ C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedServic
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\obj\Debug\netcoreapp3.1\PostAggregatedService.csprojAssemblyReference.cache
+C:\Users\Ana\source\repos\tim_3_socialbuzz-tim_3_socialbuzz\PostAggregatedService\PostAggregatedService\bin\Debug\netcoreapp3.1\Postman\URIS.postman_collection.json

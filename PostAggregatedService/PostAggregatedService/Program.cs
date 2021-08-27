@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace PostAggregatedService
 {
 #pragma warning disable CS1591
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

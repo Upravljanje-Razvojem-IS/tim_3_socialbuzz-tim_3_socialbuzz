@@ -12,7 +12,6 @@ namespace ReactionService.Data
     /// </summary>
     public class UserMockRepository : IUserMockRepository
     {
-        List<User> Users = new List<User>();
         private readonly IOptions<User> options;
 
         public UserMockRepository(IOptions<User> options)
