@@ -1,4 +1,5 @@
 ﻿using AddressService.Dtos.City;
+using AddressService.Exceptions;
 using AddressService.Models;
 using AddressService.Repositories;
 using AutoMapper;
@@ -26,7 +27,7 @@ namespace AddressService.Services
 
             if (city == null)
             {
-                throw new Exception($"City with id: {id} doesnt't exist");
+                throw new CityNotFoundException(id);
             }
 
             _cityRepo.DeleteCity(city);
@@ -38,7 +39,7 @@ namespace AddressService.Services
 
             if (city == null)
             {
-                throw new Exception($"City with id: {id} doesnt't exist");
+                throw new CityNotFoundException(id);
             }
 
             return _mapper.Map<CityDto>(city);
@@ -55,7 +56,7 @@ namespace AddressService.Services
 
             if (country == null)
             {
-                throw new Exception($"Country with id: {cityDto.CountryId} doesn't exist");
+                throw new CountryNotFoundException(cityDto.CountryId);
             }
 
             var city = _mapper.Map<City>(cityDto);
@@ -70,14 +71,14 @@ namespace AddressService.Services
 
             if (country == null)
             {
-                throw new Exception($"Country with id: {cityDto.CountryId} doesn't exist");
+                throw new CountryNotFoundException(cityDto.CountryId);
             }
 
             var city = _cityRepo.GetById(id);
 
             if (city == null)
             {
-                throw new Exception($"City with id: {id} doenst't exist");
+                throw new CityNotFoundException(id);
             }
 
             city.Name = cityDto.Name;

@@ -1,4 +1,5 @@
 ﻿using AddressService.Dtos.Country;
+using AddressService.Exceptions;
 using AddressService.Repositories;
 using AutoMapper;
 using System;
@@ -22,7 +23,7 @@ namespace AddressService.Services
 
             if (country == null)
             {
-                throw new Exception($"Country with id: {id} doesnt exist");
+                throw new CountryNotFoundException(id);
             }
 
             return _mapper.Map<CountryDto>(country);

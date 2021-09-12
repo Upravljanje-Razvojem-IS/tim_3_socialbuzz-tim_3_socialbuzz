@@ -1,5 +1,6 @@
 ﻿using AddressService.Contracts;
 using AddressService.Dtos.Country;
+using AddressService.Exceptions;
 using AddressService.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,16 +46,18 @@ namespace AddressService.Controllers
                     Timestamp = DateTime.Now
                 });
             }
-            catch (Exception e)
+            catch (CountryNotFoundException e)
             {
-                var res = e.Message.Equals($"Country with id: {id} doesnt exist") ?
-                NotFound(new ErrorResponse
+                return NotFound(new ErrorResponse
                 {
                     Message = e.Message,
                     Status = 404,
                     Timestamp = DateTime.Now
-                }) :
-                StatusCode(
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(
                     StatusCodes.Status500InternalServerError,
                     new ErrorResponse
                     {
@@ -63,8 +66,6 @@ namespace AddressService.Controllers
                         Timestamp = DateTime.Now
                     }
                 );
-
-                return res;
             }
         }
 

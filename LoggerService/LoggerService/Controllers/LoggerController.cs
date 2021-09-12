@@ -1,5 +1,6 @@
 ﻿using LoggerService.Contracts;
 using LoggerService.Dtos;
+using LoggerService.Exceptions;
 using LoggerService.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -64,16 +65,18 @@ namespace LoggerService.Controllers
                     Timestamp = DateTime.Now
                 });
             }
-            catch (Exception e)
+            catch (UserNotFoundException userNotFound)
             {
-                var res = e.Message.Equals($"User with id {logDto.UserId} doesn't exist") ?
-                 NotFound(new ErrorResponse
-                 {
-                     Message = e.Message,
-                     Timestamp = DateTime.Now,
-                     Status = 404
-                 }) :
-                StatusCode(
+                return NotFound(new ErrorResponse
+                {
+                    Message = userNotFound.Message,
+                    Timestamp = DateTime.Now,
+                    Status = 404
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(
                     StatusCodes.Status500InternalServerError,
                     new ErrorResponse
                     {
@@ -82,8 +85,6 @@ namespace LoggerService.Controllers
                         Timestamp = DateTime.Now
                     }
                 );
-
-                return res;
             }
         }
     }

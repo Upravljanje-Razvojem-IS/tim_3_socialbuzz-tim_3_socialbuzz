@@ -1,5 +1,6 @@
 ﻿using AddressService.Contracts;
 using AddressService.Dtos.City;
+using AddressService.Exceptions;
 using AddressService.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -46,16 +47,18 @@ namespace AddressService.Controllers
                     Timestamp = DateTime.Now
                 });
             }
-            catch (Exception e)
+            catch (CityNotFoundException e)
             {
-                var res = e.Message.Equals($"City with id: {id} doesnt't exist") ?
-                NotFound(new ErrorResponse
+                return NotFound(new ErrorResponse
                 {
                     Message = e.Message,
                     Status = 404,
                     Timestamp = DateTime.Now
-                }) :
-                StatusCode(
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(
                     StatusCodes.Status500InternalServerError,
                     new ErrorResponse
                     {
@@ -64,8 +67,6 @@ namespace AddressService.Controllers
                         Timestamp = DateTime.Now
                     }
                 );
-
-                return res;
             }
         }
 
@@ -86,16 +87,18 @@ namespace AddressService.Controllers
                     Timestamp = DateTime.Now
                 });
             }
-            catch (Exception e)
+            catch (CountryNotFoundException e)
             {
-                var res = e.Message.Equals($"Country with id: {cityDto.CountryId} doesn't exist") ?
-                NotFound(new ErrorResponse
+                return NotFound(new ErrorResponse
                 {
                     Message = e.Message,
                     Status = 404,
                     Timestamp = DateTime.Now
-                }) :
-                StatusCode(
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(
                     StatusCodes.Status500InternalServerError,
                     new ErrorResponse
                     {
@@ -104,8 +107,6 @@ namespace AddressService.Controllers
                         Timestamp = DateTime.Now
                     }
                 );
-
-                return res;
             }
         }
 
@@ -128,15 +129,17 @@ namespace AddressService.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                var res = e.Message.Equals($"Country with id: {cityDto.CountryId} doesn't exist") ||
-                    e.Message.Equals($"City with id: {id} doenst't exist") ?
-                NotFound(new ErrorResponse
+                if (e is CountryNotFoundException || e is CityNotFoundException)
                 {
-                    Message = e.Message,
-                    Status = 404,
-                    Timestamp = DateTime.Now
-                }) :
-                StatusCode(
+                    return NotFound(new ErrorResponse
+                    {
+                        Message = e.Message,
+                        Status = 404,
+                        Timestamp = DateTime.Now
+                    });
+                }
+                
+                return StatusCode(
                     StatusCodes.Status500InternalServerError,
                     new ErrorResponse
                     {
@@ -145,8 +148,6 @@ namespace AddressService.Controllers
                         Timestamp = DateTime.Now
                     }
                 );
-
-                return res;
             }
         }
 
@@ -162,16 +163,18 @@ namespace AddressService.Controllers
                 _cityService.DeleteCity(id);
                 return NoContent();
             }
-            catch (Exception e)
+            catch (CountryNotFoundException e)
             {
-                var res = e.Message.Equals($"City with id: {id} doesnt't exist") ?
-                NotFound(new ErrorResponse
+                return NotFound(new ErrorResponse
                 {
                     Message = e.Message,
                     Status = 404,
                     Timestamp = DateTime.Now
-                }) :
-                StatusCode(
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(
                     StatusCodes.Status500InternalServerError,
                     new ErrorResponse
                     {
@@ -180,8 +183,6 @@ namespace AddressService.Controllers
                         Timestamp = DateTime.Now
                     }
                 );
-
-                return res;
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LoggerService.Dtos;
+using LoggerService.Exceptions;
 using LoggerService.Model;
 using LoggerService.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,17 +27,17 @@ namespace LoggerService.Services
         {
             var query = _logRepo.GetBasicQuery();
 
-            if (logParams.UserId != null && logParams.UserId != Guid.Empty)
+            if (logParams.UserId != Guid.Empty)
             {
                 query = query.Where(l => l.User.Id.Equals(logParams.UserId));
             }
 
-            if (logParams.From != null && logParams.From != DateTime.MinValue)
+            if (logParams.From != DateTime.MinValue)
             {
                 query = query.Where(l => l.Timestamp >= logParams.From);
             }
 
-            if (logParams.To != null && logParams.To != DateTime.MinValue)
+            if (logParams.To != DateTime.MinValue)
             {
                 query = query.Where(l => l.Timestamp <= logParams.To);
             }
@@ -52,7 +53,7 @@ namespace LoggerService.Services
 
             if (user is null)
             {
-                throw new Exception($"User with id {logDto.UserId} doesn't exist");
+                throw new UserNotFoundException(logDto.UserId);
             }
 
             var log = _mapper.Map<Log>(logDto);

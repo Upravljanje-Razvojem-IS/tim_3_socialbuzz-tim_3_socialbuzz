@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LoggerService.Dtos;
+using LoggerService.Exceptions;
 using LoggerService.Model;
 using LoggerService.Repositories;
 using System;
@@ -22,7 +23,7 @@ namespace LoggerService.Services
 
             if (user != null)
             {
-                throw new Exception($"User with id: {userDto.Id} already exists");
+                throw new UserExistsException(userDto.Id);
             }
 
             return _mapper.Map<UserDto>(_userRepo.SaveUser(_mapper.Map<User>(userDto)));
@@ -34,7 +35,7 @@ namespace LoggerService.Services
 
             if (user is null)
             {
-                throw new Exception($"User with id: {id} doesn't exist");
+                throw new UserNotFoundException(userDto.Id);
             }
 
             user.Name = userDto.Name;
