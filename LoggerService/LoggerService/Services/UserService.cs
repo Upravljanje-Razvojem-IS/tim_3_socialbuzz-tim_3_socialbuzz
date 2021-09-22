@@ -35,7 +35,7 @@ namespace LoggerService.Services
 
             if (user is null)
             {
-                throw new UserNotFoundException(userDto.Id);
+                throw new UserNotFoundException(id);
             }
 
             user.Name = userDto.Name;
