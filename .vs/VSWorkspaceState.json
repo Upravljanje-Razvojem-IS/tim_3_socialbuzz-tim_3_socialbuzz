@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WatchingService\\WatchingService",
+    "\\WatchingService\\WatchingService\\Repository"
   ],
+  "SelectedNode": "\\WatchingService",
   "PreviewInSolutionExplorer": false
 }
