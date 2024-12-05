@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Altos\\source\\repos\\MicroserviceProject\\Microservice_RatingService\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{361B88A0-9EE1-4F65-86DF-1B26BEF9E7EB}|Microservice_RatingService\\Microservice_RatingService.csproj|c:\\users\\altos\\source\\repos\\microserviceproject\\microservice_ratingservice\\microservice_ratingservice\\application\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{361B88A0-9EE1-4F65-86DF-1B26BEF9E7EB}|Microservice_RatingService\\Microservice_RatingService.csproj|solutionrelative:microservice_ratingservice\\application\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{361B88A0-9EE1-4F65-86DF-1B26BEF9E7EB}|Microservice_RatingService\\Microservice_RatingService.csproj|c:\\users\\altos\\source\\repos\\microserviceproject\\microservice_ratingservice\\microservice_ratingservice\\application\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{361B88A0-9EE1-4F65-86DF-1B26BEF9E7EB}|Microservice_RatingService\\Microservice_RatingService.csproj|solutionrelative:microservice_ratingservice\\application\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,34 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RatingController.cs",
-              "DocumentMoniker": "C:\\Users\\Altos\\source\\repos\\MicroserviceProject\\Microservice_RatingService\\Microservice_RatingService\\Application\\Controllers\\RatingController.cs",
-              "RelativeDocumentMoniker": "Microservice_RatingService\\Application\\Controllers\\RatingController.cs",
-              "ToolTip": "C:\\Users\\Altos\\source\\repos\\MicroserviceProject\\Microservice_RatingService\\Microservice_RatingService\\Application\\Controllers\\RatingController.cs",
-              "RelativeToolTip": "Microservice_RatingService\\Application\\Controllers\\RatingController.cs",
-              "ViewState": "AgIAAAEBAAAAAAAAAAAAwCwAAABvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T15:29:09.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Altos\\source\\repos\\MicroserviceProject\\Microservice_RatingService\\Microservice_RatingService\\Application\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Microservice_RatingService\\Application\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Altos\\source\\repos\\MicroserviceProject\\Microservice_RatingService\\Microservice_RatingService\\Application\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Microservice_RatingService\\Application\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAkwCsAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T15:28:59.577Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
